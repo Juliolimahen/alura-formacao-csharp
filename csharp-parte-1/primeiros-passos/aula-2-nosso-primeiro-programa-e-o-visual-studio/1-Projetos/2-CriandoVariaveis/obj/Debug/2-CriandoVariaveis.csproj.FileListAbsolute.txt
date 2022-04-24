@@ -1,0 +1,16 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.exe.config
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.SuggestedBindingRedirects.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-olá-mundo-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.exe.config
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\bin\Debug\2-CriandoVariaveis.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.SuggestedBindingRedirects.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-5-nosso-primeiro-programa-e-o-visual-studio\OláMundo\2-CriandoVariaveis\obj\Debug\2-CriandoVariaveis.pdb
