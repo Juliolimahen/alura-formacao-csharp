@@ -1,0 +1,8 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\bin\Debug\6-AtribuicaoDeVariaveis.exe.config
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\bin\Debug\6-AtribuicaoDeVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\bin\Debug\6-AtribuicaoDeVariaveis.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\obj\Debug\6-AtribuicaoDeVariaveis.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\obj\Debug\6-AtribuicaoDeVariaveis.csproj.SuggestedBindingRedirects.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\obj\Debug\6-AtribuicaoDeVariaveis.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\obj\Debug\6-AtribuicaoDeVariaveis.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\6-AtribuicaoDeVariaveis\obj\Debug\6-AtribuicaoDeVariaveis.pdb

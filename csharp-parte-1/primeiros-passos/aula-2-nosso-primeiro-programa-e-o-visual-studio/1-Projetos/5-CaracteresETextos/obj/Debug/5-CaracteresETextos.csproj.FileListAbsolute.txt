@@ -1,0 +1,8 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\bin\Debug\5-CaracteresETextos.exe.config
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\bin\Debug\5-CaracteresETextos.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\bin\Debug\5-CaracteresETextos.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\obj\Debug\5-CaracteresETextos.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\obj\Debug\5-CaracteresETextos.csproj.SuggestedBindingRedirects.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\obj\Debug\5-CaracteresETextos.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\obj\Debug\5-CaracteresETextos.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\5-CaracteresETextos\obj\Debug\5-CaracteresETextos.pdb
