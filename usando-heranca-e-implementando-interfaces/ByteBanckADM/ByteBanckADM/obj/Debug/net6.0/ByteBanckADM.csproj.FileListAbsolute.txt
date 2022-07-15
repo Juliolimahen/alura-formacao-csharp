@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\bin\Debug\net6.0\ByteBanckADM.exe
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\bin\Debug\net6.0\ByteBanckADM.deps.json
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\bin\Debug\net6.0\ByteBanckADM.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\bin\Debug\net6.0\ByteBanckADM.dll
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\bin\Debug\net6.0\ByteBanckADM.pdb
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.dll
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\refint\ByteBanckADM.dll
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.pdb
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ByteBanckADM.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\usando-heranca-e-implementando-interfaces\ByteBanckADM\ByteBanckADM\obj\Debug\net6.0\ref\ByteBanckADM.dll
