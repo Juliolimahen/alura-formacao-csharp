@@ -3,43 +3,28 @@ using ByteBanckADM.Funcionarios;
 using ByteBanckADM.Funcionarios.Utilitarios;
 
 
+Funcionario funcionario = new Funcionario("123456767");
 
-Sorteio sorteio = new Sorteio();
+funcionario.Nome = "Julio";
+funcionario.Salario = 2000.0;
+Console.WriteLine("Total de funcionarios: "+Funcionario.totalFuncionarios);
 
-sorteio.getRandomNumber();
-int n;
-do
-{
-    switch (sorteio.getRandomNumber())
-    {
-        case 0:
-            Console.WriteLine("corinthians");
-            break;
-        case 1:
-            Console.WriteLine("fortaleza");
-            break;
-        case 2:
-            Console.WriteLine("flamengo");
-            break;
-        case 3:
-            Console.WriteLine("são paulo");
-            break;
-        case 4:
-            Console.WriteLine("america");
-            break;
-        case 5:
-            Console.WriteLine("atletico go");
-            break;
-        case 6:
-            Console.WriteLine("fluminense");
-            break;
-        case 7:
-            Console.WriteLine("athletico pa");
-            break;
-    }
+Diretor diretor = new Diretor("98887875465");
 
+diretor.Nome = "Paula";
+diretor.Salario = 5000.0;
+Console.WriteLine("Total de funcionarios: " + Funcionario.totalFuncionarios);
 
-    Console.WriteLine("Deseja sortear outro time? ");
-    n = int.Parse(Console.ReadLine());
+GerenciadorDeBonificacao gb = new GerenciadorDeBonificacao();
 
-}while (n ==1);
+gb.Registrar(diretor);
+gb.Registrar(funcionario);
+
+Console.WriteLine("Funcionario: " + funcionario.getBonificacao());
+Console.WriteLine("Diretor: " + diretor.getBonificacao());
+Console.WriteLine("Bonificação: " + gb.getBonificacao());
+
+funcionario.AumentarSalario();
+Console.WriteLine("Novo Salario Func: " + funcionario.Salario);
+diretor.AumentarSalario();
+Console.WriteLine("Salario Dir: " + diretor.Salario);

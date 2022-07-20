@@ -8,10 +8,6 @@ namespace ByteBanckADM.Funcionarios
 {
     public abstract class Pessoa
     {
-        public string nome { get; set; }
-        public string cpf { get; set; }
-        public double salario { get; set; }
-
-
+        
     }
 }
