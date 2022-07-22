@@ -9,9 +9,7 @@ namespace ByteBanckADM.Funcionarios
 {
     public abstract class FuncionarioAutenticavel : Funcionario, IAutenticavel
     {
-        public FuncionarioAutenticavel(string cpf, double salario) : base(cpf, salario)
-        {
-        }
+        public FuncionarioAutenticavel(string cpf, double salario) : base(cpf, salario){}
         public string Senha { get; set; }
         public bool Autenticar(string senha) => Senha.Equals(senha);
     }

@@ -3,7 +3,8 @@ using ByteBanckADM.Funcionarios;
 using ByteBanckADM.Funcionarios.Utilitarios;
 using ByteBanckADM.SistemaInterno;
 
-//CalcularBonificacao();
+
+CalcularBonificacao();
 UsarSistema();
 
 void CalcularBonificacao()
@@ -30,7 +31,7 @@ void CalcularBonificacao()
     gb.Registrar(camila);
     gb.Registrar(julio);
 
-    Console.WriteLine("Totakl de Bonificação:" + gb.getBonificacao());
+    Console.WriteLine("Totakl de Bonificação: " + gb.GetBonificacao());
 }
 
 void UsarSistema()
@@ -45,11 +46,20 @@ void UsarSistema()
     ursula.Nome = "Ursula";
     ursula.Senha = "1234";
 
-    //Designer pedro = new Designer("123.899.333.33");
-    //pedro.Nome = "Pedro";
-    //pedro.Senha = "1234";
-
-    //sistemaInterno.Logar(pedro, "1234");
-    sistemaInterno.Logar(ursula, "123");
-    sistemaInterno.Logar(roberta, "1234");
+    if (sistemaInterno.Logar(ursula, "1234"))
+    {
+        Console.WriteLine("bem-vido ao sistema, " + ursula.Nome);
+    }
+    else
+    {
+        Console.WriteLine("senha incorreta");
+    }
+    if (sistemaInterno.Logar(roberta, "134"))
+    {
+        Console.WriteLine("bem-vido ao sistema " + roberta.Nome);
+    }
+    else
+    {
+        Console.WriteLine("senha incorreta");
+    }
 }

@@ -8,11 +8,14 @@ namespace ByteBanckADM.Funcionarios.Utilitarios
 {
     public class Sorteio
     {
-        public int getRandomNumber()
+        public int RandomNumber
         {
-            var random = new Random();
-            int randomNumber = random.Next(0, 9);
-            return randomNumber;
+            get
+            {
+                var random = new Random();
+                int randomNumber = random.Next(0, 9);
+                return randomNumber;
+            }
         }
     }
 }

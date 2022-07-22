@@ -14,9 +14,6 @@ namespace ByteBanckADM.Funcionarios.Utilitarios
         {
             this.totalBonificacao+=funcionario.getBonificacao();
         }
-        public double getBonificacao()
-        {
-            return this.totalBonificacao;
-        }
+        public double GetBonificacao() => this.totalBonificacao;
     }
 }

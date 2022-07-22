@@ -10,8 +10,7 @@ namespace ByteBanckADM.ParceriaComercial
 {
     public class ParceiroComercial: IAutenticavel
     {
-        public string Senha { get; set; }
-
+        public string? Senha { get; set; }
         bool IAutenticavel.Autenticar(string senha) => this.Senha.Equals(senha);
     }
 }

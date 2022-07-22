@@ -8,16 +8,8 @@ namespace ByteBanckADM.Funcionarios
 {
     internal class Designer : Funcionario
     {
-        public Designer(string cpf) : base(cpf, 3000)
-        {
-        }
-        public override void AumentarSalario()
-        {
-            this.Salario *= 1.11;
-        }
-        public override double getBonificacao()
-        {
-            return this.Salario * 0.17;
-        }
+        public Designer(string cpf) : base(cpf, 3000){}
+        public override void AumentarSalario() => this.Salario *= 1.11;
+        public override double getBonificacao() => Salario * 0.17;
     }
 }
