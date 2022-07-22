@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ByteBanckADM.Funcionarios
 {
-    internal class GerenteDeContas : Funcionario
+    public class GerenteDeContas : Funcionario
     {
-        public GerenteDeContas(string cpf, double salario) : base(cpf, salario)
+        public GerenteDeContas(string cpf) : base(cpf, 5000)
         {
         }
 
+        public string Senha { get; set; }
         public override void AumentarSalario()
         {
             this.Salario *= 1.05;
@@ -20,6 +21,11 @@ namespace ByteBanckADM.Funcionarios
         public override double getBonificacao()
         {
             return this.Salario *= 0.25;
+        }
+
+        public bool Autenticar(string senha)
+        {
+            return this.Senha == senha;
         }
     }
 }

@@ -152,3 +152,52 @@ public string? Cpf { get; private set; }
 
 Modificador de acesso Protected
 - É utilizado quando quero deixar a possibilidade de ser alterado nas classe herdadas 
+
+Classe Abstrata 
+Ex. 
+````cs
+public abstract class Funcionario
+    {
+        public string? Nome { get; set; }
+        public string? Cpf { get; private set; }
+        public double Salario { get; protected set; }
+
+        public static int totalFuncionarios { get; private set; }
+
+        public Funcionario(string cpf, double salario)
+        {
+            totalFuncionarios++;
+            this.Cpf = cpf;
+            this.Salario = salario;
+        }
+        public abstract double getBonificacao();
+
+        public abstract void AumentarSalario();
+
+    }
+````
+- Para definir um classe abstrata é necessário adicionar o palavra reservada abstract ao nome da classe
+- Quando usar 
+    - Quando não é necessário ter um objeto da classe, quando só for necessário definir comportamentos e atibutos que outras classes possam herdar, servindo como base para outras classes derivadas 
+- Uma das caracteristicas da classe abstrata é que não é possível criar objeto dela, não permite criar instâncias 
+- Uma das formas de informar ao compilador que uma classe deve ser abstrata é usar a palavra reservada abstract
+- Por ser um conceito mais genérico, não faz sentido a possibilidade de criar um objeto a partir de uma classe abstrata
+- Uma classe abstrata serve como modelo para criação de outras classes. Na classe abstrata podemos explicitar comportamentos e atributos, além de definir a assinatura de métodos que devem ser implementados pelas classes concretas que herdarem dela
+- Uma classe abstrata busca representar um conceito, uma ideia. Por isso não faz sentido a possibilidade de se criar um objeto concreto a partir de uma classe abstrata
+- Uma classe abstrata pode possuir diversas propriedades, pois tem poucas restrições
+
+Métodos Abstratos
+````cs
+public abstract double getBonificacao();
+````
+- Em um classe abstrata como Funcionario quando desejamos que um método seja de implementação obrigatória definimos uma assinatura, nome de método, com a palavra reservada abstract
+- Não deve ser implementado na classe abstrata, só se deve criar as assinaturas dos métodos para serem implementados nas classes derivadas  
+- Devem ser criados para obrigar o desenvolvedor implementalos nas classes derivadas, afim de evitar erros
+- Métodos abstratos só existem dentro de classes abstratas, não é possível criar métodos abstratos dentro de classes concretas 
+
+
+O que aprendemos?
+- Invocamos o construtor da classe base, a partir do construtor da classe derivada.
+- Protegemos propriedades usando o operador de visibilidade protected para impedir o acesso direto a uma propriedade de um objeto.
+- Utilizamos classes abstratas para definir uma classe que será modelo para criação de novas classes.
+- Como usar métodos abstratos para definir como obrigatória a implementação de determinado comportamento em classes derivadas
