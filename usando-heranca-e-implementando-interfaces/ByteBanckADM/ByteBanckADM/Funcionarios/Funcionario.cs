@@ -14,16 +14,11 @@ namespace ByteBanckADM.Funcionarios
             this.Cpf = cpf;
             this.Salario = salario;
         }
-
         public string? Nome { get; set; }
         public string? Cpf { get; private set; }
         public double Salario { get; protected set; }
-
         public static int totalFuncionarios { get; private set; }
-
         public abstract double getBonificacao();
-
         public abstract void AumentarSalario();
-
     }
 }

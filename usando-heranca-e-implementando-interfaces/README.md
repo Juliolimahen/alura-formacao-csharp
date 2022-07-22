@@ -1,20 +1,20 @@
 # Usando herança e implementado interfaces C#
 
-Organização do nosso código
+## Organização do nosso código
 - No .NET temos os namespaces, que têm a mesma função e que estruturam todas as bibliotecas do framework.
 
-Padrão de Camadas
+## Padrão de Camadas
 - A arquitetura de camadas que tem por objetivo uma criação mais modular do software. Dessa forma cada camada assume uma responsabilidade e elas se comunicam para sua aplicação funcionar.
     - <a href="https://cursos.alura.com.br/extra/alura-mais/design-de-codigo-vs-arquitetura-de-software-c640">Design de código vs Arquitetura de software</a>
     - <a href="https://cursos.alura.com.br/extra/alura-mais/domain-driven-design-ddd-o-que-e--c283">Domain-Driven Design (DDD) - O que é?</a>
 
-Usando o this 
+## Usando o this 
 - Com o this eu consigo diferenciar o que é um objeto da classe e o que é parametro
 
-Polimofismo
+## Polimofismo
 - A definição de polimorfismo é que um mesmo comportamento pode acontecer de várias formas, dependendo da lista de parâmetros que ele recebe.
 
-Sobrecarga de métodos
+## Sobrecarga de métodos
 - Mesmo nome e argumentos diferentes 
 
 Utilizando a herança temos dois tipos básicos de classes:
@@ -24,13 +24,13 @@ Utilizando a herança temos dois tipos básicos de classes:
 - <a href="https://cursos.alura.com.br/course/introducao-a-uml">Curso UML introdução: modelagem de soluções</a>
 
 
-Herança 
+## Herança 
 - Na orientação a objetos, a herança é um mecanismo que possibilita que classes compartilhem definições de atributos (propriedades), comportamentos (métodos) e outros membros entre elas
 
-Classe base
+## Classe base
 - contém as características que servirão de base para uma outra classe, em algumas literaturas também são chamadas de superclasses
 
-Classe derivada 
+## Classe derivada 
 - herda as características e comportamentos da classe base. Esse tipo de classe também é conhecida como subclasse.
 
     - Recomendação para saber mais sobre UML Curso https://cursos.alura.com.br/course/introducao-a-uml
@@ -50,11 +50,7 @@ Ex:
         }
     }
 ```
-O que aprendemos? 
-
-- Na orientação a objetos, a herança é um mecanismo que nos permite reaproveitar código.
-- Podemos redefinir um comportamento escrito em uma classe base em uma classe derivada. Assim, ele passará a funcionar de forma específica em uma classe derivada.
-- Acessamos definições presentes na classe base usando o operador base.
+## Encapsulamento 
 
 Definir propriedade como sendo da classe e não do objeto
 - Adicionar static na método 
@@ -126,7 +122,7 @@ public class Auxiliar : Funcionario
 
 - A máquina virtual do .NET, a CLR, fica encarregada de detectar dentro do programa em execução quando um objeto não for mais utilizado e ele será descartado.
 
-Deixar atributo como obrigatório atráves do método construtor
+## Deixar atributo como obrigatório atráves do método construtor
 
 ````cs
 public Funcionario(string cpf)
@@ -153,7 +149,7 @@ public string? Cpf { get; private set; }
 Modificador de acesso Protected
 - É utilizado quando quero deixar a possibilidade de ser alterado nas classe herdadas 
 
-Classe Abstrata 
+## Classe Abstrata 
 Ex. 
 ````cs
 public abstract class Funcionario
@@ -186,7 +182,7 @@ public abstract class Funcionario
 - Uma classe abstrata busca representar um conceito, uma ideia. Por isso não faz sentido a possibilidade de se criar um objeto concreto a partir de uma classe abstrata
 - Uma classe abstrata pode possuir diversas propriedades, pois tem poucas restrições
 
-Métodos Abstratos
+## Métodos Abstratos
 ````cs
 public abstract double getBonificacao();
 ````
@@ -195,9 +191,137 @@ public abstract double getBonificacao();
 - Devem ser criados para obrigar o desenvolvedor implementalos nas classes derivadas, afim de evitar erros
 - Métodos abstratos só existem dentro de classes abstratas, não é possível criar métodos abstratos dentro de classes concretas 
 
+Caso queira herdar de uma classe abstrata e não implementar seus métodos, é necessário definar a classe derivada como abstrata também
 
-O que aprendemos?
+````cs
+ public abstract class Autenticavel : Funcionario
+    {
+        public Autenticavel(string cpf, double salario) : base(cpf, salario)
+        {
+        }
+        public string Senha { get; set; }
+        public bool Autenticar(string senha)
+        {
+            return this.Senha == senha;
+        }
+    }
+```` 
+
+## Herança múltipla
+- O dotnet não implementa herança múltipla 
+
+## Interface 
+- Interface só defina contratos, assinaturas
+Ex. 
+````cs
+public interface Autenticavel
+    {
+        public bool Autenticar(string senha);
+    }
+```` 
+Conveção
+- Existe uma boa prática em relação a interface, é recomendado usar o prefixo I no inicio do nome da interface
+Ex. 
+````cs
+public interface IAutenticavel
+    {
+        public bool Autenticar(string senha);
+    }
+```` 
+- A interface é entendida como um contrato onde especificamos o comportamento que deve ser implementado por determinada classe. Através dela, simulamos o conceito de herança múltipla que não existe implementado no .NET. Conseguimos simular porque agora um “FuncionarioAutenticavel” está herdando de “Funcionario” todas as características e também implementando os comportamentos de outro componente da interface “IAutenticavel”
+
+- A interface é similar a uma classe abstrata, mas só conterá a assinatura dos métodos a serem implementados
+
+### Para saber mais: simulando herança múltipla
+
+- Como vimos no curso, o .NET não implementa a herança múltipla por uma questão de performance. Sendo assim uma construção como public class Desenvolvedor: Funcionario,Diretor na qual buscamos herdar de duas classes, não é possível. Mas usando o recurso das interfaces podemos simular o comportamento.
+
+- Entendendo a interface como um ponto de definição para um grupo de comportamentos, podemos usá-la para simular a utilização de herança múltipla. Vamos ao exemplo do Ornitorrinco:
+````cs
+ public interface IAves
+    {
+        bool PossuiBico();
+        bool Oviparidade();
+    }COPIAR CÓDIGO
+Definimos uma interface com características de Aves.
+
+ public interface IMamifero
+    {
+        bool PresencaDePelos();
+        bool GrandulasMamarias();
+        bool PresencaDeCauda();
+    }
+````
+
+- Agora definimos uma interface com as características de um mamífero. Para esse conjunto distinto de características, vamos definir uma classe que se compromete a assinar esses contratos e “herdar” essas características.
+
+````cs
+ public class Ornitorrinco : IAves, IMamifero
+    {
+
+        private  string _reino = "Animalia";
+        private  string _filo = "Chordata";
+        private  string _especie = "O.anatinus";
+        public string Reino { get { return _reino; } }
+        public string Filo { get { return _filo; } }
+        public string Especie { get { return _especie; } }
+
+        public bool GrandulasMamarias()
+        {
+            return true;
+        }
+
+        public bool Oviparidade()
+        {
+            return true;
+        }
+
+        public bool PossuiBico()
+        {
+            return true;
+        }
+
+        public bool PresencaDeCauda()
+        {
+            return true;
+        }
+
+        public bool PresencaDePelos()
+        {
+            return true;
+        }
+    }
+````
+
+- A partir do momento que a classe Ornitorrinco implementa essas duas interfaces e passa a ter os comportamentos “característicos” definidos para uma ave e para um mamífero, podemos dizer que Ornitorrinco herda os comportamentos definidos nas interfaces. Com este exemplo ilustramos a simulação de herança múltipla usando C#.
+
+- Para saber sobre mais possibilidades da utilização de interfaces, recomendamos a leitura:
+
+- Artigo Microsoft : <a href="https://docs.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/">Palavras-chave C#</a>
+
+- Artigo Microsoft : <a href="https://docs.microsoft.com/pt-br/dotnet/csharp/fundamentals/types/interfaces">Interfaces – definir o comportamento para vários tipos</a>
+
+
+## Desafio: um contrato para bonificação
+
+- Agora que você já sabe mais sobre interfaces, precisamos refatorar nosso código para transformar a bonificação em uma interface. A classe que assinar a interface irá implementar seu cálculo de bonificação.
+
+- Considere este exercício como opcional, mas ele pode ser muito interessante para colocar em prática o tema interfaces visto na aula. Então, aceita o desafio?.
+
+## O que aprendemos? 
+
+- Na orientação a objetos, a herança é um mecanismo que nos permite reaproveitar código.
+- Podemos redefinir um comportamento escrito em uma classe base em uma classe derivada. Assim, ele passará a funcionar de forma específica em uma classe derivada.
+- Acessamos definições presentes na classe base usando o operador base.
+
 - Invocamos o construtor da classe base, a partir do construtor da classe derivada.
 - Protegemos propriedades usando o operador de visibilidade protected para impedir o acesso direto a uma propriedade de um objeto.
 - Utilizamos classes abstratas para definir uma classe que será modelo para criação de novas classes.
 - Como usar métodos abstratos para definir como obrigatória a implementação de determinado comportamento em classes derivadas
+
+- Como adicionar uma nova classe à hierarquia de classes já definida com a intenção de atender a uma nova demanda do projeto.
+- Avançamos na utilização da herança de classes fazendo uma classe herdar de outra.
+
+- O C# não implementa o conceito de herança múltipla, pois classes muito distintas com métodos de mesmo nome poderiam causar problemas para o compilador definir qual usar na nova instância.
+- O funcionamento das interfaces na orientação a objetos, que são contratos que definem comportamentos a serem implementados pelas classes que assinam este contrato.
+- Como utilizar o padrão de nomenclatura adotada para nomeação de interfaces, aplicando a convenção que utiliza o prefixo I
