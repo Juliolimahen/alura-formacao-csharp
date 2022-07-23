@@ -12,10 +12,10 @@ namespace _6_AtribuicaoDeVariaveis
         {
             Console.WriteLine("Executando projeto 5-atribuição de variaveis");
 
-            int idade = 24;
+            int idade = 64;
             int idadeJulio = idade;
 
-            idade = 23;
+            idade = 93;
 
             Console.WriteLine(idade);
             Console.WriteLine(idadeJulio);
