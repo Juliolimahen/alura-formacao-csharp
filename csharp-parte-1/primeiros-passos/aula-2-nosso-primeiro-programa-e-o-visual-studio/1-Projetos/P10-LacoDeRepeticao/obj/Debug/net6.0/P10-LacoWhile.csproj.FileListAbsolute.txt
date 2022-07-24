@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\bin\Debug\net6.0\P10-LacoWhile.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\bin\Debug\net6.0\P10-LacoWhile.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\bin\Debug\net6.0\P10-LacoWhile.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\bin\Debug\net6.0\P10-LacoWhile.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\bin\Debug\net6.0\P10-LacoWhile.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\refint\P10-LacoWhile.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\P10-LacoWhile.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P10-LacoDeRepeticao\obj\Debug\net6.0\ref\P10-LacoWhile.dll

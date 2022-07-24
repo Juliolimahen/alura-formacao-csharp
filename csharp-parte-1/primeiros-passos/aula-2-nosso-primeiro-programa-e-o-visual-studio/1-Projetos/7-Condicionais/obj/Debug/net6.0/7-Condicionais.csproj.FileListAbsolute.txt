@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\bin\Debug\net6.0\7-Condicionais.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\bin\Debug\net6.0\7-Condicionais.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\bin\Debug\net6.0\7-Condicionais.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\bin\Debug\net6.0\7-Condicionais.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\bin\Debug\net6.0\7-Condicionais.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\refint\7-Condicionais.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\7-Condicionais.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\7-Condicionais\obj\Debug\net6.0\ref\7-Condicionais.dll

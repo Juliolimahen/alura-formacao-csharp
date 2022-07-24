@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\bin\Debug\net6.0\P11-LacoFor.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\bin\Debug\net6.0\P11-LacoFor.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\bin\Debug\net6.0\P11-LacoFor.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\bin\Debug\net6.0\P11-LacoFor.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\bin\Debug\net6.0\P11-LacoFor.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\refint\P11-LacoFor.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\P11-LacoFor.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-parte-1\primeiros-passos\aula-2-nosso-primeiro-programa-e-o-visual-studio\1-Projetos\P11-LacoFor\obj\Debug\net6.0\ref\P11-LacoFor.dll
