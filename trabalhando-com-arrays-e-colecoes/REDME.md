@@ -329,6 +329,88 @@ A biblioteca de classes do .NET é rica em recursos que podemos utilizar em conj
 
 Para saber mais sobre as outras interfaces para manipulação de coleções do .NET deixamos a recomendação de acesso a documentação da Microsoft <a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/concepts/collections">Coleções (C#)</a>
 
+## Linq 
+
+O LINQ (Language Integrated Query) é uma linguagem que permite consultas em uma fonte de dados, como uma lista de objetos (a _listaDeContas, por exemplo), um banco de dados ou um arquivo .xml, por exemplo.
+
+Linq e Lambda
+````cs
+return _listaDeContas.Where(conta => conta.Titular.Cpf == cpf).FirstOrDefault();
+````
+
+Consulta
+````cs 
+List<ContaCorrente> ConsultaPorAgencia(int numeroAgencia)
+{
+    var consulta = (
+        from conta in _listaDeContas
+        where conta.Numero_agencia == numeroAgencia
+        select conta).ToList();
+    return consulta;
+}
+````
+
+- O from define a origem dos dados, o where determina o filtro e o select seleciona o objeto daquela coleção. No nosso caso, também usamos o método ToList() para transformar o resultado em uma lista. Esse recurso é bastante interessante para consultarmos coleções de objetos usando C#.
+
+## Para saber mais: LINQ
+
+O LINQ ( Language Integrated Query), é uma linguagem para manipulação de dados que nos foi apresentado no .NET Framework 3.0 e tem por objetivo possibilitar que os programas desenvolvidos na plataforma .NET consigam selecionar dados a partir de origens diversas desde um array, bancos de dados relacionais e até arquivos XML.
+
+Na utilização do LINQ podemos usar duas formas:
+
+Sintaxe de consulta: muito similar as consultas utilizadas em bancos relacionais como SQL e a operação de consulta é dividida em 3 cláusulas: from define a origem dos dados, o where para aplicação dos filtros e do select para a seleção dos dados, veja o exemplo abaixo:
+
+````cs
+List<Cliente> clientes = new List<Cliente>(){
+          new Cliente(){Nome="José",Cpf="10855522299",Profissao="Dev"},
+          new Cliente(){Nome="Maria",Cpf="10477722299",Profissao="Enfermeira"},
+          new Cliente(){Nome="Rose",Cpf="10966622299",Profissao="Analista"},
+          new Cliente(){Nome="Caio",Cpf="10355722299",Profissao="Entregador"},
+          new Cliente(){Nome="Elisa",Cpf="10967422299",Profissao="Motorista"},
+          new Cliente(){Nome="João",Cpf="10778122299",Profissao="Atleta"}
+};
+
+Cliente? ConsultaCliente(List<Cliente> _clientes, string _cpf)
+{
+
+    return (from cliente in _clientes
+            where cliente.Cpf == _cpf
+            select cliente).FirstOrDefault();
+
+}
+````
+
+Outra possibilidade é utilizar métodos LINQ , a maioria de extensão, que permite uma instrução mais concisa, veja o exemplo anterior usando método:
+````cs
+Cliente? ConsultaCliente2(List<Cliente> _clientes, string _cpf) { 
+
+    return _clientes.Where(x => x.Cpf == _cpf).FirstOrDefault();
+
+}
+````
+
+Para saber mais sobre utilização do LINQ deixamos a recomendação de acesso a documentação da Microsoft;
+
+- <a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries">Introdução a consultas LINQ (C#)</a>
+- <a href="https://cursos.alura.com.br/course/linq-c-sharp">Curso Entity LinQ parte 1: crie queries poderosas em C#</a>
+- <a href="https://cursos.alura.com.br/course/linq-c-sharp-parte-2">Curso Entity LinQ parte 2: Store Procedures e consultas com o LinQPad</a>
+
+## Para saber mais: Guid
+
+O Globally Unique Identifier, mais conhecido como GUID, ele representa um identificador global exclusivo ele é utilizado para as situações que precisamos de uma sequência única que não se repita para toda uma aplicação.
+
+O Guid é um número inteiro de 128 bits que pode gerar ao em torno de 5.316.911.983.139.663.491.615.228.241.121.400.000 combinações possíveis, muita coisa não é mesmo?
+
+Uma representação de um guid df0d718c-06f1-4f22-8628-f825fc1d43e5, no C# temos a struct Guid que permite criar e manipular guids, veja um exemplo:
+
+````cs
+Console.WriteLine(Guid.NewGuid().ToString());// saída 826890ce-6206-4144-817c-0c3879d77fae
+````
+
+Para saber mais sobre utilização da struct Guid deixamos a recomendação de acesso a documentação da Microsoft 
+
+<a href="https://docs.microsoft.com/pt-br/dotnet/api/system.guid?view=net-6.0">Guid Estrutura (C#)</a>
+
 
 ## O que aprendemos? 
 - O que são arrays e como esta estrutura de dados é útil para agruparmos em uma única referência vários valores de determinado tipo;
@@ -348,3 +430,8 @@ Para saber mais sobre as outras interfaces para manipulação de coleções do .
 - Como utilizar o método Remove da classe lista para remoção de um elemento do array de objetos;
 - Como implementar a interface de forma tipada IComparable e o método CompareTo para fazer a ordenação da lista de contas correntes;
 A criar um algoritmo de busca simples para encontrar um objeto no array de contas correntes.
+
+- A utilizar o método de extensão Where aplicado diretamente a lista de objetos, que permite a simplificação da busca de um elemento na lista;
+- Sobre a configuração no arquivo .Csproj que configura o projeto para alertar sobre operações que podem retornar um valor nulo para um objeto;
+- A usar a sintaxe de consulta do LINQ que torna o código bem legível e de fácil entendimento;
+Como utilizar a estrutura Guid do C# para gerar uma sequência alfanumérica de forma aleatória no sistema.

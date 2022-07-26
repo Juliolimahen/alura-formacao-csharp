@@ -100,8 +100,5 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
                 return RecuperarContaNoIndice(indice);
             }
         }
-     
-      
-
     }
 }

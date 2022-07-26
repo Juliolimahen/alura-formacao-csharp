@@ -1,10 +1,10 @@
 ﻿namespace bytebank.Modelos.Conta
 {
-    public class ContaCorrente : IComparable<ContaCorrente> 
-    {     
-       
-        public Cliente Titular{get;set;}
-        public string Nome_Agencia{ get; set; }
+    public class ContaCorrente : IComparable<ContaCorrente>
+    {
+
+        public Cliente Titular { get; set; }
+        public string Nome_Agencia { get; set; }
 
         private int _numero_agencia;
         public int Numero_agencia
@@ -15,7 +15,7 @@
             }
             set
             {
-                if(value <= 0)
+                if (value <= 0)
                 {
 
                 }
@@ -35,7 +35,7 @@
             }
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     return;
                 }
@@ -68,11 +68,11 @@
 
         public bool Sacar(double valor)
         {
-            if(saldo < valor)
+            if (saldo < valor)
             {
                 return false;
             }
-            if(valor < 0)
+            if (valor < 0)
             {
                 return false;
             }
@@ -92,13 +92,13 @@
             saldo = saldo + valor;
         }
 
-        public bool Transferir(double valor,ContaCorrente destino)
+        public bool Transferir(double valor, ContaCorrente destino)
         {
-            if(saldo < valor)
+            if (saldo < valor)
             {
                 return false;
             }
-            if(valor <0)
+            if (valor < 0)
             {
                 return false;
             }
@@ -112,7 +112,7 @@
 
         public int CompareTo(ContaCorrente? other)
         {
-            if(other == null)
+            if (other == null)
             {
                 return 1;
             }
@@ -122,13 +122,21 @@
             }
         }
 
-        public ContaCorrente(int numero_agencia,string conta)
+        public ContaCorrente(int numero_agencia, string conta)
         {
             Numero_agencia = numero_agencia;
             Conta = conta;
             Titular = new Cliente();
             TotalDeContasCriadas += 1;
 
+        }
+
+        public ContaCorrente(int numero_agencia)
+        {
+            Numero_agencia = numero_agencia;
+            Conta = Guid.NewGuid().ToString().Substring(0, 8);
+            Titular = new Cliente();
+            TotalDeContasCriadas += 1;
         }
 
         public static int TotalDeContasCriadas { get; set; }
