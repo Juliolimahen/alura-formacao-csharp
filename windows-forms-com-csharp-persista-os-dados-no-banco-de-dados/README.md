@@ -230,7 +230,201 @@ Desvantagens
 Comandos
 - DDL - DATA DEFINITION LANGUAGE
 - DML - DATA MANIPULATION LANGUAGE
-- DCL - DATA CONTROL LANGUAGE  
+- DCL - DATA CONTROL LANGUAGE
+
+### INSERT 
+
+ex.
+
+````sql
+INSERT INTO TABELA (CODIGO, NOME, CPF, IDADE) VALUES ('ZZZZZ','MARIA','333333333333',40)
+````
+
+### Para saber mais: SQL Injection
+
+O objetivo deste curso foi de mostrar como podemos fazer a interação do código C# com banco de dados.
+
+Em uma parte das aulas usamos a técnica de concatenar as variáveis com os comandos SQL como mostrado abaixo:
+
+````cs
+string SQL;
+    SQL = @"INSERT INTO TB_Cliente
+            (Id
+            ,Nome
+            ,NomePai
+            ,NomeMae
+            ,NaoTemPai
+            ,Cpf
+            ,Genero
+            ,Cep
+            ,Logradouro
+            ,Complemento
+            ,Bairro
+            ,Cidade
+            ,Estado
+            ,Telefone
+            ,Profissao
+            ,RendaFamiliar) 
+            VALUES ";
+    SQL += "('" + this.Id + "'";
+    SQL += ",'" + this.Nome + "'";
+    SQL += ",'" + this.NomePai + "'";
+    SQL += ",'" + this.NomeMae + "'";
+    SQL += "," + Convert.ToString(this.NaoTemPai) + ",";
+    SQL += "'" + this.Cpf + "'";
+    SQL += "," + Convert.ToString(this.Genero) + ",";
+    SQL += "'" + this.Cep + "'";
+    SQL += ",'" + this.Logradouro + "'";
+    SQL += ",'" + this.Complemento + "'";
+    SQL += " ,'" + this.Bairro + "'";
+    SQL += ",'" + this.Cidade + "'";
+    SQL += ",'" + this.Estado + "'";
+    SQL += ",'" + this.Telefone + "'";
+    SQL += ",'" + this.Profissao + "'";
+    SQL += "," + Convert.ToString(this.RendaFamiliar) + ");"; 
+````
+
+A técnica de concatenar as variáveis sobre o código pode acarretar no que chamamos de SQL Injection.
+
+SQL Injection é uma técnica de ataque baseada na manipulação do código SQL, que é a linguagem utilizada para troca de informações entre aplicativos e bancos de dados relacionais. Como a maioria dos fabricantes de software utiliza o padrão SQL-92 ANSI na escrita do código SQL, os problemas e as falhas de segurança aqui apresentadas se aplicam a todo ambiente que faz uso desse padrão para troca de informações.
+
+Por isso, caso você use a concatenação de varáveis com comandos, deve tomar muito cuidado em:
+- Não usar esta técnica caos a consulta envolva segurança do sistema;
+- Mesmo que não envolva segurança seja mais criterioso em criticar a variável utilizada.
+
+Os códigos apresentados neste curso foram apenas acadêmicos. Não há motivo para se preocupar em SQL Injection porque, por exemplo, nem Login implementamos.
+
+Mas, irei mostrar a seguir, alguns exemplos em que a técnica de concatenar variáveis com comandos SQL possam trazer problemas.
+
+Por exemplo: Vamos supor que você tenha feito uma tela de Login. O conteúdo do Login foi salvo em duas variáveis: username e password.
+
+No seu código você escreve a seguinte consulta para validar o usuário e senha:
+
+
+
+Os códigos apresentados neste curso foram apenas acadêmicos. Não há motivo para se preocupar em SQL Injection porque, por exemplo, nem Login implementamos.
+
+Mas, irei mostrar a seguir, alguns exemplos em que a técnica de concatenar variáveis com comandos SQL possam trazer problemas.
+
+Por exemplo: Vamos supor que você tenha feito uma tela de Login. O conteúdo do Login foi salvo em duas variáveis: username e password.
+
+No seu código você escreve a seguinte consulta para validar o usuário e senha:
+
+````cs 
+var sql = "select Count(*) from users where username = '" + username +
+"' and password = '" + password + "'";
+````
+
+var sql = "select Count(*) from users where username = '" + username +
+"' and password = '" + password + "'";COPIAR CÓDIGO
+Se o valor de Count(*) for maior que 1 significa que o Login será aceito.
+
+Vamos supor que você é um hacker e queira burlar a segurança do sistema. Você então entra com os seguintes valores, sabendo de antemão que o usuário admin é um Login válido mas que você não sabe a senha dele:
+
+Username: admin' --
+
+Password: xxxxx
+
+Quando seu programa for concatenar as variáveis aos comandos SQL teremos:
+
+var sql = "select Count(*) from users where username = 'admin' -- and password = 'xxxxx'";COPIAR CÓDIGO
+Note que, ao executar o comando acima, o que vier após o -- será um comentário. Logo, o que o SQL fará é o comando:
+
+var sql = "select Count(*) from users where username = 'admin'COPIAR CÓDIGO
+Esta consulta retornará um valor já que o usuário Admin existe. O resultado será um valore de Count maior que 0 e, isso, significará validação na entrada do sistema.
+
+Isso é um SQL Injection.
+
+Veja outro exemplo. Vamos supor que a sua String de Conexão do banco você use um usuário administrador do banco de dados. Você esqueceu de criar um usuário com privilégios limitados.
+
+Aqui, no nosso curso, se você se recorda, usamos o usuário root para fazer a conexão. E este usuário é um administrador.
+
+Logo o seu Hacker faz o seguinte. Digita os seguintes dados:
+
+Username: ' having 1=1 --
+
+Password: xxxxx
+
+O comando ficará assim:
+````cs
+var sql = "select Count(*) from users where username = ' having 1=1
+````
+Este comando acarretará, dependendo do banco de dados, na seguinte mensagem:
+````sql
+Column 'usuarios.codigo' is invalid in the select list because it is not contained in an aggregate function and there is no GROUP BY clause
+````
+
+Neste caso o Hacker sabe o nome da tabela de usuários na base de dados. Logo ele pode fazer o seguinte:
+
+Username: admin' ;drop table usuarios --
+
+Password: xxxxx
+
+Será executado o comando:
+````cs
+var sql = "select Count(*) from users where username = 'admin'; drop table usuarios";
+````
+Pronto. Sua tabela de usuários será destruída e seu sistema ficará fora do ar já que ninguém mais vai validar o Login e Password.
+
+Apresentamos o problema. Agora como resolvemos isso?
+
+Algumas dicas:
+
+- Estabeleça uma política de segurança rígida e criteriosa limitando o acesso dos seus usuários de conexão de banco a apenas algumas ações. Usar o usuário administrador do banco no String de Conexão só funciona quando você está estudando e fazendo exemplos para aprendizado em sua máquina;
+
+- Faça validação da entrada de dados dos seus usuários e não permita a entrada de caracteres como ponto e vírgula (;), dois traços (--) e aspas simples ('). Claro que estes caracteres vão depender que banco de dados você está usando. E impeça caracteres que permitam modificar os comandos SQL do seu código.
+
+No caso da aspas simples (') substitua por aspas duplas (").
+
+````cs
+public void ExpurgaApostrofe(object texto)
+{
+    ExpurgaApostrofe = replace(texto, "'", "''");
+}
+````
+E no caso dos caracteres e aspas maliciosas substitua por vazio.
+
+````cs
+public void LimpaLixo(object input)
+{
+    var lixo;
+    var textoOK;
+    lixo = array("select", "drop", ";", "--", "insert", "delete", "xp_");
+    textoOK = input;
+    for (var i = 0; i <= uBound(lixo); i++)
+        textoOK = replace(textoOK, lixo(i), "");
+    LimpaLixo = textoOK;
+}
+````
+E rejeite os caracteres maliciosos:
+
+````cs
+public void ValidaDados(object input)
+{
+    lixo = array("select", "insert", "update", "delete", "drop", "--", "'");
+    ValidaDados = true;
+    for (var i = lBound(lixo); i <= ubound(llixo); i++)
+    {
+        if ((instr(1, input, lixo(i), vbtextcompare) != 0))
+        {
+            ValidaDados = false;
+        }
+    }
+}
+````
+- Limite o tamanho dos usuários e senhas. E, se possível, implemente regras de senhas (Numero mínimo e máximo de caracteres, obrigatoriedade de letras minúsculas e maiúsculas, etc.);
+
+- Implemente um Log de auditoria na sua aplicação. A cada linha de comando digitada escreva em um arquivo onde o acesso somente seja permitido no servidor para você detectar possíveis tentativas de ataques;
+
+- Implementa, pelo menos nos processos que envolvam seguranças, Stored Procedures para validar, por exemplo, usuários, ou para atualizar algum critério de segurança no sistema;
+
+- Somente execute a concatenação do usuário no comando SQL, como abaixo:
+
+````cs
+var sql = "select Count(*) from users where username = '" + username +
+"' and password = '" + password + "'";
+````
+Somente depois de validar o conteúdo da variável username e password nos critérios de validação e limpeza.
 
 
 ## O que aprendemos
@@ -247,3 +441,14 @@ Comandos
 - Como obtemos a string de conexão de uma base, através da fonte de dados
 - A implementar o método para executar uma consulta no banco de dados
 - A implementar o método para executar um comando no banco de dados
+
+- Como implementar a classe FicharioDB
+- Um pouco da história do SQL
+- Alguns comandos de SQL a serem usados na nossa aplicação
+- Como implementar o construtor da classe FicharioDB
+- Como criar o método de inclusão de um registro na base de dados
+
+- Como complementar a classe FicharioDB
+- A implementar o método de alteração
+- Como implementar o método de exclusão
+- Como implementar o método de busca de um item e de busca de todos os itens

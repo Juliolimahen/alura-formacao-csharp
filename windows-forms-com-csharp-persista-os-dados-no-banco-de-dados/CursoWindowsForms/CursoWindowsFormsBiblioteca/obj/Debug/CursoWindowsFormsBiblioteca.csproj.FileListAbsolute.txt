@@ -25,3 +25,6 @@ C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-
 C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\obj\Debug\CursoWindowsFormsBiblioteca.csproj.CopyComplete
 C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\obj\Debug\CursoWindowsFormsBiblioteca.dll
 C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\obj\Debug\CursoWindowsFormsBiblioteca.pdb
+C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\bin\Debug\Databases\Fichario.mdf
+C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\bin\Debug\Databases\Fichario_log.ldf
+C:\ws-projetos\alura-formacao-csharp\windows-forms-com-csharp-persista-os-dados-no-banco-de-dados\CursoWindowsForms\CursoWindowsFormsBiblioteca\bin\Debug\CursoWindowsFormsBiblioteca.dll.config
