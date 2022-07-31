@@ -22,35 +22,33 @@ namespace Alura.Loja.Testes.ConsoleApp
         {
             GravarUsandoEntity();
             RecuperarProdutos();
-            using (var context = new LojaContext())
+            using (var context = new ProdutoDAOEntity())
             {
                 //Pegar o primeiro produto
-                Produto primeiro = context.Produtos.First();
+                Produto primeiro = context.Produtos().First();
                 primeiro.Nome = "Cassino Royale Editado";
-                context.Produtos.Update(primeiro);
-                context.SaveChanges();
+                context.Atualizar(primeiro);
             }
                 RecuperarProdutos();
         }
 
         private static void ExcluirProdutos()
         {
-            using (var context = new LojaContext())
+            using (var context = new ProdutoDAOEntity())
             {
-                IList<Produto> produtos = context.Produtos.ToList();
+                IList<Produto> produtos = context.Produtos();
                 foreach (var item in produtos)
                 {
-                    context.Produtos.Remove(item);
+                    context.Remover(item);
                 }
-                context.SaveChanges();
             }
         }
 
         private static void RecuperarProdutos()
         {
-            using (var context = new LojaContext())
+            using (var context = new ProdutoDAOEntity())
             {
-                IList<Produto> produtos = context.Produtos.ToList();
+                IList<Produto> produtos = context.Produtos();
                 Console.WriteLine("Foram encontrados {0} produtos", produtos.Count);
                 foreach (var item in produtos)
                 {
@@ -66,10 +64,9 @@ namespace Alura.Loja.Testes.ConsoleApp
             p.Categoria = "Livros";
             p.Preco = 19.89;
 
-            using (var context = new LojaContext())
+            using (var context = new ProdutoDAOEntity())
             {
-                context.Produtos.Add(p); //adicionar produtos ao contexto(banco de dados)
-                context.SaveChanges();//Salvar alterações 
+                context.Adicionar(p); //adicionar produtos ao contexto(banco de dados)
             }
         }
 
