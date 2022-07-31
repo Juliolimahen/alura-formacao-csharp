@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +18,69 @@ namespace Alura.Loja.Testes.ConsoleApp
             //RecuperarProdutos();
             //ExcluirProdutos();
             //RecuperarProdutos();
-            AtualizarProduto();
+            //AtualizarProduto();
+
+            //using(var contexto = new LojaContext())
+            //{
+            //    var produtos = contexto.Produtos.ToList();
+            //    foreach (var p in produtos)
+            //    {
+            //        Console.WriteLine(p);
+            //    }
+
+            //    Console.WriteLine("=================");
+            //    foreach (var e in contexto.ChangeTracker.Entries())
+            //    {
+            //        Console.WriteLine(e);
+            //    }
+
+            //    var p1 = produtos.Last();
+            //    p1.Nome = "007 - O Espiao Que Me Amava";
+
+            //    Console.WriteLine("=================");
+            //    foreach (var e in contexto.ChangeTracker.Entries())
+            //    {
+            //        Console.WriteLine(e.State);
+            //    }
+            //}
+
+                using (var contexto = new LojaContext())
+                {
+
+                    var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
+                    var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+                    loggerFactory.AddProvider(SqlLoggerProvider.Create());
+
+                    var produtos = contexto.Produtos.ToList();
+                    foreach (var p in produtos)
+                    {
+                        Console.WriteLine(p);
+                    }
+
+                    Console.WriteLine("=================");
+                    foreach (var e in contexto.ChangeTracker.Entries())
+                    {
+                        Console.WriteLine(e);
+                    }
+
+                    var p1 = produtos.Last();
+                    p1.Nome = "007 - O Espiao Que Me Amava";
+
+                    Console.WriteLine("=================");
+                    foreach (var e in contexto.ChangeTracker.Entries())
+                    {
+                        Console.WriteLine(e.State);
+                    }
+
+                    contexto.SaveChangesAsync();
+
+                    //Console.WriteLine("=================");
+                    //produtos = contexto.Produtos.ToList();
+                    //foreach (var p in produtos)
+                    //{
+                    //    Console.WriteLine(p);
+                    //}
+            }
         }
 
         private static void AtualizarProduto()
@@ -60,9 +125,9 @@ namespace Alura.Loja.Testes.ConsoleApp
         private static void GravarUsandoEntity()
         {
             Produto p = new Produto();
-            p.Nome = "Cassino Royale";
+            p.Nome = "Harry";
             p.Categoria = "Livros";
-            p.Preco = 19.89;
+            p.Preco = 17.89;
 
             using (var context = new ProdutoDAOEntity())
             {
