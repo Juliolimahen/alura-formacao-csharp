@@ -311,6 +311,43 @@ Por convenção, o nome da propriedade que representará o relacionamento será 
 
 ## Inserindo objetos relacionados
 
+````cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        //compra de 6 pães franceses
+        var paoFrances = new Produto();
+        paoFrances.Nome = "Pão Francês";
+        paoFrances.PrecoUnitario = 0.40;
+        paoFrances.Unidade = "Unidade";
+        paoFrances.Categoria = "Padaria";
+
+        var compra = new Compra();
+        compra.Quantidade = 6;
+        compra.Produto = paoFrances;
+        compra.Preco = paoFrances.PrecoUnitario * compra.Quantidade;
+
+        using(var contexto = new LojaContext())
+        {
+            var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
+            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+            loggerFactory.AddProvider(SqlLoggerProvider.Create());
+
+            contexto.Compras.Add(compra);
+            
+            //monitoramento change tracker
+            //ExibeEntries(contexto.ChangeTracker.Entries());
+
+            contexto.SaveChanges();
+        }
+    }
+}
+````
+Quando adicionarmos o compra no Change Tracker, o Entity perceberá que existe uma referência ao produto paoFrances e também o incluirá para ser supervisionado.
+
+Executaremos a aplicação, como resultado veremos que temos duas entidades, um do tipo Compra e outro do tipo Produto. As duas entidades estão com o estado Added, por isso o Entity irá gerar o comando SQL INSERT para cada um deles. O contexto foi esperto o suficiente para adicionar a referência do produto contida na compra.
+
 ## Relacionamento muitos para muitos e a classe de join
 
 É necessário criar uma classe para fazer essa relação(versão do entity core não permite)
@@ -333,7 +370,7 @@ E criar uma chave composta sobescrevendo o Método OnModelCreate na classe de co
             modelBuilder.Entity<PromocaoProduto>().HasKey(p => new { p.PromacaoId, p.ProdutoId });
             base.OnModelCreating(modelBuilder);
 ````
-Exercício 
+### Exercício 
 
 No sistema bancário que Manoel está produzindo, chegou a hora de relacionar contas a clientes. O requisito que Manoel precisa atender é: uma conta pode estar associada a vários clientes, e um cliente pode ter várias contas.
 
@@ -394,3 +431,169 @@ namespace Alura.Banco.Modelo
     }
 }
 ````
+### Exercício
+
+Onde foram parar os registros da tabela de join?
+
+
+Você viu no vídeo que quando excluímos uma promoção, os registros relacionados à tabela de join também são excluídos.
+
+Isso aconteceu porque...
+
+- A tabela de join foi criada com uma chave estrangeira para a tabela de promoção, e nessa chave foi definido o trigger OnDeleteCascade. Quando a promoção foi excluída, os registros relacionados foram excluídos em cascata.
+
+## Shadow Properties
+
+Para maiores informações sobre o assunto, visite a página da <a href="https://docs.microsoft.com/pt-br/ef/core/modeling/shadow-properties">documentação na Microsoft (em inglês)</a>.
+
+### Exercício 
+
+Cidades do Rio de Janeiro
+
+````cs
+namespace Alura.Banco.Modelo
+{
+    public class Cidade
+    {
+        public int Id { get; set; }
+        public string Nome  { get; set; }
+        public int Populacao  { get; set; }
+        public string Estado { get; set; }
+    }
+}
+````
+
+Considere também que o contexto BancoContext está gerenciando a persistência de objetos do tipo Cidade:
+
+````cs
+namespace Alura.Banco.Entity
+{
+    public class BancoContext : DbContext
+    {
+        public DbSet<Cidade> Cidades { get; set; }
+
+        //...outras propriedades aqui...
+    }
+}
+````
+
+Selecione a alternativa que faz o seguinte SQL:
+
+````sql
+SELECT * From Cidades WHERE Estado = 'RJ' AND Populacao > 50000
+````
+
+- ````cs
+    var cidades = contexto.Cidades
+    .Where(c => c.Estado == "RJ" && c.Populacao > 50000)
+    .ToList();
+    ````
+
+
+## Como realizar joins entre entidades relacionadas 
+
+### Exercício
+
+O cliente possui que contas?
+
+Selecione a opção que irá recuperar o primeiro cliente do banco de dados, juntamente com suas contas bancárias. Lembre-se que Manoel criou um relacionamento muitos para muitos entre Cliente e Conta.
+
+Abaixo o modelo que representa a relação entre essas classes.
+
+````cs 
+
+namespace Alura.Banco.Modelo
+{
+    public class Conta
+    {
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public double Saldo { get; set; }
+        public IList<ContaCliente> Clientes { get; set; }
+    }
+
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public IList<ContaCliente> Contas { get; set; }
+    }
+
+    public class ContaCliente
+    {
+        public int IdConta { get; set; }
+        public int IdCliente { get; set; }
+        public Conta Conta { get; set; }
+        public Cliente Cliente { get; set; }
+    }
+}`
+````
+
+- ````cs 
+    var cliente = contexto.Clientes
+  .Include(c => c.Contas)
+  .ThenInclude(cc => cc.Conta)
+  .FirstOrDefault();
+  ````
+
+### Para saber mais: sobrecarga de Include
+
+O método Include possui uma segunda sobrecarga, que permite informarmos como argumento de entrada uma string com o nome da propriedade de navegação a ser incluída no join. A vantagem dessa abordagem é que não precisamos usar outros métodos ThenInclude para continuar a navegação em outras entidades. Por exemplo, para o exemplo Cliente x Conta, poderíamos fazer:
+
+````cs
+var lista = contexto.Clientes.Include("Contas.Conta");
+````
+
+A desvantagem é que se o nome da propriedade mudar, teremos que lembrar todos os lugares onde fizemos isso, porque não teremos ajuda do compilador.
+
+### Exercício 
+
+LEFT JOIN?
+
+No vídeo anterior, você viu que o SELECT gerado pelo Entity para recuperar o endereço de entrega foi parecido com o SQL abaixo:
+
+````sql
+SELECT TOP 1 c.*, e.*
+FROM Clientes c LEFT JOIN Enderecos e ON e.ClienteId = c.Id
+````
+
+Porque o Entity optou por gerar um join com a cláusula LEFT JOIN, ao invés de INNER JOIN?
+
+- Porque Endereco não é obrigatório, e o uso da cláusula ````INNER JOIN```` faria com que clientes sem endereços fossem rejeitados pelo ```` SELECT````.
+
+## Visão geral 
+
+Finalizamos o curso de Entity Framework Core! Faremos um resumo sobre o que aprendemos durante o curso.
+
+Vimos que para trabalhar com o modelo de negócios e persisti-lo no banco de dados era algo extremamente trabalhoso. O programador era responsável por gerenciar e manter o código que se comunicava com o banco. Qualquer mudança na lógica de negócio, gerava uma série de impactos nas classes de acesso aos dados.
+
+Em seguida, Começamos o uso do Entity após a instalação dos pacotes, passando a substituir todo o trabalho, permitindo forcarmos na lógica de negócio. Aprendemos como o Entity gerencia os comandos SQL, trabalhando com a DML (INSERT, SELECT, UPDATE e DELETE) para manipular os dados.
+
+manipulação de dados
+<a></a>
+
+Para gerenciar quais objetos e quais comandos SQL precisavam ser emitidos para o banco de dados, o Entity usava um recurso chamado Change Tracker, onde era armazenado os estados de cada objeto.
+
+change tracker
+
+<a></a>
+
+Enquanto a aplicação evoluía, era necessário sincronizá-la com o banco de dados, onde Entity também nos auxilia com a DDL (CREATE, DROP, ALTER, RENAME). Utilizamos o conceito de migrações (Migrations), onde as alterações no negócio são aplicadas ao banco. As migrações eram feitas por meio de classes, que tinha os métodos Up() para subir e Down() para descer de versão.
+
+Instalamos no NuGet, um pacote para utilizarmos diversos comandos que trabalham com as migrações.
+
+Add-Migration
+Remove-Migration
+Update-Database
+Todas as alterações no banco de dados eram armazenadas na tabela __EFMigrationHistory. A tabela indicava quais migrações tinham sido aplicadas no banco de dados.
+
+Após entender como o Entity funciona, aprendemos como ele trabalha e gerencia os relacionamentos entre classe. Os relacionamentos eram um para um, um para muitos e muitos para muitos. Porém o Entity Core não gerencia sozinho as tabelas JOIN, por isso contornamos criando uma classe específica.
+<a></a>
+tabela de relacionamentos
+
+Para recuperarmos dados relacionados, usamos métodos específicos:
+
+Include()
+ThenInclude()
+Load()

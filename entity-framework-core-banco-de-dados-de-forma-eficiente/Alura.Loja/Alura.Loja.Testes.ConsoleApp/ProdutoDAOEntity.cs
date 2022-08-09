@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alura.Loja.Testes.ConsoleApp
 {
-    internal class ProdutoDAOEntity : IProdutoDAO, IDisposable
+    class ProdutoDAOEntity : IProdutoDAO, IDisposable
     {
         private LojaContext contexto;
 
