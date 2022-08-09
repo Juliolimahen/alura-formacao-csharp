@@ -201,3 +201,196 @@ E chama o método ````DetectChanges```` ao executar o ````SaveChanges````. O que
 É possível desligar o monitoramento automático de mudanças através de uma propriedade booleana no ChangeTracker chamada ````AutoDetectChangesEnabled````. Quando isso é necessário? Quando você tiver uma gravação massiva de objetos através do ````SaveChanges````, a performance pode sofrer impacto considerável, uma vez que o método ````DetectChanges```` será chamado e o ChangeTracker irá percorrer toda a lista de objetos sendo monitorados.
 
 Maiores informações neste artigo <a href="https://blog.oneunicorn.com/2016/11/16/notification-entities-in-ef-core-1-1/">aqui</a> (em inglês).
+
+## Para saber mais: resumo dos estados EntityState
+Segue abaixo um resumo dos estados e seu comportamento.
+
+- Added
+O objeto é novo, foi adicionado ao contexto, e o método SaveChanges ainda não foi executado. Depois que as mudanças são salvas, o estado do objeto muda para Unchanged. Objetos no estado Added não têm seus valores rastreados em sua instância de EntityEntry.
+
+- Deleted
+O objeto foi excluído do contexto. Depois que as mudanças foram salvas, seu estado muda para Detached.
+
+- Detached
+O objeto existe, mas não está sendo monitorado. Uma entidade fica nesse estado imediatamente após ter sido criada e antes de ser adicionada ao contexto. Ela também fica nesse estado depois que foi removida do contexto através do método Detach ou se é carregada por um método com opção NoTracking. Não existem instâncias de EntityEntry associadas a objetos com esse estado.
+
+- Modified
+Uma das propriedades escalares do objeto foi modificada e o método SaveChanges ainda não foi executado. Quando o monitoramento automático de mudanças está desligado, o estado é alterado para Modified apenas quando o método DetectChanges é chamado. Quando as mudanças são salvas, o estado do objeto muda para Unchanged.
+
+- Unchanged
+O objeto não foi modificado desde que foi anexado ao contexto ou desde a última vez que o método SaveChanges foi chamado.
+
+## Como sincronizar o modelo de classes com a estrutura de dados?
+
+### Para saber mais 
+A sigla DDL significa Data Definition Language, ela é um subconjunto da linguagem SQL. comandos INSERT, DELETE, UPDATE e SELECT, esses comandos são DML que significa Data Manipulation Language.</strong>
+
+## Migrations
+- Parte responsável pela de sincronização
+Para usar é necessário instalar o pacote 
+````bash 
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version
+````
+
+## Comandos Migrations
+
+````bash 
+Add-Migration
+````
+
+````bash
+Drop-Database 
+````
+    - Esse comando é utilizado para dropar o banco de dados apontado pelo contexto
+
+````bash
+Remove-Migration
+````
+    - Esse comando é utilizado para remover a última migração não aplicada no banco de dados apontado pelo contexto
+
+````bash
+Scaffold-DbContext
+````
+    -Esse comando é utilizado para criar uma classe que estende de DbContext, além de classes que representam as tabelas do banco
+
+
+Para descobrir quais comandos estão disponíveis no recurso de Migrations, use este:
+````bash 
+Get-Help EntityFramework
+````
+
+## passos para sincronizar uma mudança de seu modelo de classes com o banco de dados
+
+Registrar uma versão (migration, nos termos do Entity)
+
+- Esse passo é executado pelo comando Add-Migration.
+
+Efetivamente sincronizar as mudanças no banco apontado pelo contexto da aplicação. Isso é feito pelo comando Update-Database
+-  Existe uma alternativa a esse passo, que é gerar o script DDL das migrações e enviar para o responsável por executá-lo no servidor desejado
+
+## Para saber mais: sincronizando o banco com sua própria aplicação
+
+Depois que sua aplicação estiver madura o bastante para ser promovida, surge a questão: como atualizar o banco de dados daquele ambiente específico? Vimos que em organizações com políticas de acesso mais restritas a ambientes críticos, a solução é gerar um arquivo com o script das migrações e entregar esse arquivo à equipe responsável. Essa tarefa é realizada com o comando ````Script-Migration````.
+
+Além disso, também é possível fazer que sua própria aplicação cuide da migração das versões. Ou seja, podemos escrever código em nossa aplicação para que o banco de dados seja sincronizado. Isso é feito através do método de extensão ````Migrate````, que está acessível na propriedade ````Database```` da classe ````DbContext````. Essa propriedade representa a instância do banco de dados apontado pelo contexto Entity específico de sua aplicação (no nosso exemplo, ````LojaContext````), e expõe métodos que permitem gerenciar o banco apontado pelo contexto, como por exemplo sua criação, exclusão e validação de existência.
+
+O método ````Migrate```` só pode ser usado em bancos de dados relacionais e fica disponível no pacote ````Microsoft.EntityFrameworkCore.Relational````.
+
+Assim, para garantir que todas as migrações estarão aplicadas no banco de dados, podemos escrever:
+
+````cs
+using(var contexto = new LojaContext())
+{
+  contexto.Database.Migrate();
+}`
+````
+Você precisa garantir que esse código seja executado antes de qualquer acesso aos objetos gerenciados pelo contexto. Isso vai depender do tipo de aplicação que será implementada.
+
+## Relacionamento um para muitos
+
+No Entity Framework, para representarmos que uma compra tem um produto, colocamos uma propriedade do tipo Produto na classe Compra, chamada por exemplo de Produto. Além disso, como no modelo relacional não podemos guardar um objeto (Produto), precisamos guardar uma referência para a sua chave primária, chamada de chave estrangeira.
+
+Se tivermos a seguinte classe Compra no código:
+
+````cs
+internal class Compra
+{
+   public int Id { get; set; }
+   public int Quantidade { get; internal set; }
+   public Produto Produto { get; internal set; }
+   public double Preco { get; internal set; }
+}
+````
+
+Qual deve ser o nome da chave estrangeira desse relacionamento, e em qual classe essa propriedade deve ser colocada?
+
+- ProdutoID na classe Compra.
+
+Por convenção, o nome da propriedade que representará o relacionamento será o nome da classe seguido da palavra ID. Então para representar a classe Produto dentro da classe Compra, criamos a propriedade ProdutoID na classe Compra, do tipo int, pois não pode ser nulo.
+
+
+## Inserindo objetos relacionados
+
+## Relacionamento muitos para muitos e a classe de join
+
+É necessário criar uma classe para fazer essa relação(versão do entity core não permite)
+
+````cs
+    public class PromocaoProduto
+    {
+        public PromocaoProduto() { }
+
+        public int ProdutoId { get; set; }
+        public int PromacaoId { get; set; }
+        public Produto Produto { get; set; }
+        public Promocao promacao { get; set; }
+    }
+````
+E criar uma chave composta sobescrevendo o Método OnModelCreate na classe de contexto
+
+````cs
+//composição de chaves primarias 
+            modelBuilder.Entity<PromocaoProduto>().HasKey(p => new { p.PromacaoId, p.ProdutoId });
+            base.OnModelCreating(modelBuilder);
+````
+Exercício 
+
+No sistema bancário que Manoel está produzindo, chegou a hora de relacionar contas a clientes. O requisito que Manoel precisa atender é: uma conta pode estar associada a vários clientes, e um cliente pode ter várias contas.
+
+Suponha que as classes Conta e Cliente estejam especificadas desta maneira:
+
+````cs
+namespace Alura.Banco.Modelo
+{
+    public class Conta
+    {
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public double Saldo { get; set; }
+    }
+
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+    }
+}
+````
+
+Para que o Entity consiga mapear o cenário Contas x Clientes (descrito no primeiro parágrafo) no banco de dados, selecione as alternativas que descrevem as mudanças que você vai precisar fazer em seu modelo.
+
+- Incluir uma propriedade Clientes do tipo ````IList<ContaCliente>```` na classe Conta.
+- Incluir uma propriedade Contas do tipo ````IList<ContaCliente>```` na classe Cliente.
+- Criar uma classe ContaCliente para representar a tabela de join entre conta e cliente.
+
+O código da solução deve ficar parecido com:
+
+````cs
+namespace Alura.Banco.Modelo
+{
+    public class Conta
+    {
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public double Saldo { get; set; }
+        public IList<ContaCliente> Clientes { get; set; }
+    }
+
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public IList<ContaCliente> Contas { get; set; }
+    }
+
+    public class ContaCliente
+    {
+        public int IdConta { get; set; }
+        public int IdCliente { get; set; }
+        public Conta Conta { get; set; }
+        public Cliente Cliente { get; set; }
+    }
+}
+````

@@ -9,6 +9,17 @@ namespace Alura.Loja.Testes.ConsoleApp
         /// Propriedade responsável por definir qual classe iremos persistir (Mapear)
         /// </summary>
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<Promocao> Promocoes { get; set; }
+
+        //É executado no evento de criação 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //composição de chaves primarias 
+            modelBuilder.Entity<PromocaoProduto>().HasKey(p => new { p.PromacaoId, p.ProdutoId });
+            base.OnModelCreating(modelBuilder);
+        }
+
 
         /// <summary>
         /// Método Responsável por realizar o configuração com o banco de dados

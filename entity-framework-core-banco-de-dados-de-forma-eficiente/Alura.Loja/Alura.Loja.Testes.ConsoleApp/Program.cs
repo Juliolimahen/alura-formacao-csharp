@@ -13,6 +13,7 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
+            #region como o entity monta o sql
             //GravarUsandoAdoNet();
             //GravarUsandoEntity();
             //RecuperarProdutos();
@@ -43,43 +44,79 @@ namespace Alura.Loja.Testes.ConsoleApp
             //        Console.WriteLine(e.State);
             //    }
             //}
+            #endregion
+            #region capitulo change tracker
+            //using (var contexto = new LojaContext())
+            //{
 
-                using (var contexto = new LojaContext())
-                {
+            //var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
+            //var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+            //loggerFactory.AddProvider(SqlLoggerProvider.Create());
 
-                    var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
-                    var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-                    loggerFactory.AddProvider(SqlLoggerProvider.Create());
+            //var produtos = contexto.Produtos.ToList();
+            //foreach (var p in produtos)
+            //{
+            //    Console.WriteLine(p);
+            //}
 
-                    var produtos = contexto.Produtos.ToList();
-                    foreach (var p in produtos)
-                    {
-                        Console.WriteLine(p);
-                    }
+            //Console.WriteLine("=================");
+            //foreach (var e in contexto.ChangeTracker.Entries())
+            //{
+            //    Console.WriteLine(e);
+            //}
 
-                    Console.WriteLine("=================");
-                    foreach (var e in contexto.ChangeTracker.Entries())
-                    {
-                        Console.WriteLine(e);
-                    }
+            //var p1 = produtos.Last();
+            //p1.Nome = "007 - O Espiao Que Me Amava";
 
-                    var p1 = produtos.Last();
-                    p1.Nome = "007 - O Espiao Que Me Amava";
+            //Console.WriteLine("=================");
+            //foreach (var e in contexto.ChangeTracker.Entries())
+            //{
+            //    Console.WriteLine(e.State);
+            //}
 
-                    Console.WriteLine("=================");
-                    foreach (var e in contexto.ChangeTracker.Entries())
-                    {
-                        Console.WriteLine(e.State);
-                    }
+            //contexto.SaveChangesAsync();
 
-                    contexto.SaveChangesAsync();
+            //Console.WriteLine("=================");
+            //produtos = contexto.Produtos.ToList();
+            //foreach (var p in produtos)
+            //{
+            //    Console.WriteLine(p);
+            //}
 
-                    //Console.WriteLine("=================");
-                    //produtos = contexto.Produtos.ToList();
-                    //foreach (var p in produtos)
-                    //{
-                    //    Console.WriteLine(p);
-                    //}
+            //}
+            #endregion
+
+            //Compra de 6 pães fraceses
+            var paoFraces = new Produto();
+
+            //paoFraces.Id = 1;
+            paoFraces.Nome = "Pão Francês";
+            paoFraces.PrecoUnitario = 0.40;
+            paoFraces.Unidade = "kg";
+
+            var compra = new Compra();
+            //compra.Id = 1;
+            compra.Quantidade = 2;
+            compra.Produto = paoFraces;
+            compra.Tipo = "Massas";
+
+            var promocaoDePascoa = new Promocao();
+            promocaoDePascoa.Descricao = "Páscoa Feliz";
+            promocaoDePascoa.DataInicio = DateTime.Now;
+            promocaoDePascoa.DataTermino = DateTime.Now.AddMonths(3);
+
+            //promocaoDePascoa.Produtos.Add(new PromocaoProduto());
+            //promocaoDePascoa.Produtos.Add(new Produto());
+            //promocaoDePascoa.Produtos.Add(new Produto());
+
+            using (var context = new LojaContext())
+            {
+                var serviceProvider = context.GetInfrastructure<IServiceProvider>();
+                var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+                loggerFactory.AddProvider(SqlLoggerProvider.Create());
+
+                context.Compras.Add(compra);
+                context.SaveChanges();
             }
         }
 
@@ -94,7 +131,7 @@ namespace Alura.Loja.Testes.ConsoleApp
                 primeiro.Nome = "Cassino Royale Editado";
                 context.Atualizar(primeiro);
             }
-                RecuperarProdutos();
+            RecuperarProdutos();
         }
 
         private static void ExcluirProdutos()
@@ -127,7 +164,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             Produto p = new Produto();
             p.Nome = "Harry";
             p.Categoria = "Livros";
-            p.Preco = 17.89;
+            p.PrecoUnitario = 17.89;
 
             using (var context = new ProdutoDAOEntity())
             {
@@ -140,7 +177,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             Produto p = new Produto();
             p.Nome = "Harry Potter e a Ordem da Fênix";
             p.Categoria = "Livros";
-            p.Preco = 19.89;
+            p.PrecoUnitario = 19.89;
 
             using (var repo = new ProdutoDAO())
             {
