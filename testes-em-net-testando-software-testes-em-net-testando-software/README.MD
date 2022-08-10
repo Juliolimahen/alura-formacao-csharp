@@ -313,3 +313,7 @@ Com base nisso, assinale a alternativa correta.
 - Usamos a anotação ````[Fact]```` para testar “fatos” únicos, ou seja, um único método, e quando não temos a necessidade de parâmetros;
 - Existe vantagem da utilização da anotação ````[Theory]````, passar um conjunto grande de valores para um método de teste que serão entendidos como uma novo teste;
 - Podemos gerenciar os testes em desenvolvimento através da janela do gerenciador de testes.
+
+- O conceito do TDD e como aplicá-lo, guiando o desenvolvimento da nossa solução de estacionamento com base no teste;
+- De acordo com o desenvolvimento orientado por testes, primeiro escrevemos o teste e depois a implementação da funcionalidade;
+- A prática do TDD pode ajudar no aprimoramento dos comportamentos de uma classe.
