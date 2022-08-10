@@ -193,6 +193,115 @@ Cada inline data é reconhecido como um novo teste
 - Importante para se criar senarios diferentes para testes, afim de avitar testes com vícios
 - Consigo testar, criar testes, com um volume maor de dados 
 
+## Configuração
+
+Definir nome do teste 
+````cs
+ //Possibilidade de definir um nome pro teste
+        [Fact(DisplayName ="Teste n° 1")]
+````
+
+Ignorar teste não implementado 
+
+````cs
+ [Fact(Skip ="Teste ainda não implementado. Ignorar.")]
+        public void ValidaNomeProprietario()
+        {
+
+        }
+````
+Definir agrupamento 
+````cs
+[Trait("Funcionalidade", "Acelerar")]
+        public void TestarVeiculoAcelerar()
+        {}
+
+[Trait("Funcionalidade", "Frear")]
+        public void TestaVeiculoFrear()
+        {}
+````
+
+## Anotações do xUnit
+
+Na escrita de códigos de testes utilizando o framework de testes xUnit, é necessário identificar qual anotação ou conjunto de anotações queremos utilizar, sempre levando em consideração o objetivo do teste.
+
+Sendo assim, marque as opções corretas.
+- Um método de teste com [Fact], tem como objetivo testar um “fato” único, e como um dos recursos mais utilizados, consegue atender  todo um projeto de testes. o [Fact] tem como objetivo ser o atributo de um método para testar um fato único
+
+- Outra alternativa de anotação que podemos usar no xUnit é o [Theory] que permite que passemos parâmetros para um método de teste em conjunto com a anotação [InLineData(“Parâmetros”)].
+
+- Na utilização do xUnit deve-se realizar uma análise e identificar se o método de teste será decorado com [Fact] ou Theory porque não é possível usar as duas anotações para um método de testes. Para decorarmos um método de teste devemos analisar e escolher um [Fact] ou Theory de acordo com os objetivos de nossos testes
+
+## Para saber mais: Utilizando ClassData ao InlineData
+
+Quando estamos utilizando uma ````Theory````, temos a flexibilidade de utilizar o InlineData com o objetivo de passar um conjunto considerável de parâmetros para executar no método de testes. Porém, em alguns casos, o conjunto de InlineData pode crescer muito e poluir o código de testes. Ou ainda, temos a necessidade de passar um objeto como parâmetro, mas não temos como gerar uma instância e passar para uma anotação.
+
+Para esses casos, temos como opção a anotação ClassData. Para utilizar este recurso é importante que a classe que terá os objetos passados como parâmetros implemente a interface IEnumerable<object[]> Como exemplo vamos usar a classe Veículo:
+
+````cs
+    public class Veiculo:IEnumerable<object[]>
+````
+e implementamos o método:
+
+````cs
+ public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[]
+            {
+                new Veiculo
+                {
+                    Proprietario = "André Silva",
+                    Placa = "ASD-9999",
+                    Cor="Verde",
+                    Modelo="Fusca"
+                }
+            };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+````
+
+Com essas refatorações, podemos criar um método de teste que receba um objeto da classe veículo, veja o exemplo abaixo:
+
+````cs
+        [Theory]
+        [ClassData(typeof(Veiculo))]
+        public void TestaVeiculoClass(Veiculo modelo)
+        {
+            //Arrange
+            var veiculo = new Veiculo();
+
+            //Act
+            veiculo.Acelerar(10);
+            modelo.Acelerar(10);
+
+            //Assert
+            Assert.Equal(modelo.VelocidadeAtual, veiculo.VelocidadeAtual);
+        }
+````
+
+Apesar de parecer um pouco mais complexo, é sempre preferível passar um objeto para um conjunto grande de parâmetros na assinatura de qualquer método.
+
+
+## TDD - Desenvolvimento guiado por testes
+
+A idéia do tdd é primeiro ser implementado o teste e depois as funcionadades e os ajustes para que os teste sejam aprovados  
+
+3 Princípios básicos TDD
+
+- Implementar um teste que falhe 
+- Não escrever mais nada além do necessário para um teste falhar 
+- Não escrever nada além do necessário para o teste passar
+
+
+### Sobre TDD
+
+Conforme aprendemos, o TDD é uma maneira de pensar o desenvolvimento de uma aplicação no qual cada nova funcionalidade criada é testada.Imagine um cenário, onde o processo de desenvolvimento de alguma nova função de um software, deve ser sempre testada antes de entrar em produção, são cenários assim que a adoção de metodologias como o TDD é amplamente empregada.
+
+- O TDD colabora para o desenvolvimento de um código com mais qualidade, já que a pessoa desenvolvedora escreverá funcionalidades testadas. O TDD guia todo o desenvolvimento com base nos testes a serem desenvolvidos antes de qualquer funcionalidade, portanto as funcionalidades escritas já estarão testadas.
+
+
+Com base nisso, assinale a alternativa correta.
 ### O que aprendemos?
 
 - Podemos usar o Visual Studio Community para configurar um projeto de teste;
@@ -200,3 +309,7 @@ Cada inline data é reconhecido como um novo teste
 - Testes de unidade são testes que tem por objetivo testar as menores unidades de um código, as classes;
 - Usamos o padrão de escrita AAA (Arrange, Act, Assert) para permitir que a escrita do código de teste siga uma sequência lógica, que será útil para o entendimento e futuras manutenções;
 - Escrevemos códigos de testes com xUnit porque este é um dos mais utilizados frameworks de testes em .NET do mercado.
+
+- Usamos a anotação ````[Fact]```` para testar “fatos” únicos, ou seja, um único método, e quando não temos a necessidade de parâmetros;
+- Existe vantagem da utilização da anotação ````[Theory]````, passar um conjunto grande de valores para um método de teste que serão entendidos como uma novo teste;
+- Podemos gerenciar os testes em desenvolvimento através da janela do gerenciador de testes.

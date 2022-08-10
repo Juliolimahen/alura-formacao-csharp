@@ -5,7 +5,9 @@ namespace Alura.estacionamento.teste
 {
     public class VeiculoTestes
     {
-        [Fact]
+        //Possibilidade de definir um nome pro teste
+        [Fact(DisplayName = "Teste n° 1")]
+        [Trait("Funcionalidade", "Acelerar")]
         public void TestarVeiculoAcelerar()
         {
             //Arrange
@@ -19,6 +21,7 @@ namespace Alura.estacionamento.teste
         }
 
         [Fact]
+        [Trait("Funcionalidade", "Frear")]
         public void TestaVeiculoFrear()
         {
             //Arrange
@@ -29,6 +32,28 @@ namespace Alura.estacionamento.teste
 
             //Assert
             Assert.Equal(-150, veiculo.VelocidadeAtual);
+        }
+
+        [Fact(Skip = "Teste ainda não implementado. Ignorar.")]
+        public void ValidaNomeProprietario()
+        {
+
+        }
+
+        //Método de teste que passa um objeto, meneira mais correta para grande quantidade de dados 
+        [Theory]
+        [ClassData(typeof(Veiculo))]
+        public void TestaVeiculoClass(Veiculo modelo)
+        {
+            //Arrange
+            var veiculo = new Veiculo();
+
+            //Act
+            veiculo.Acelerar(10);
+            modelo.Acelerar(10);
+
+            //Assert
+            Assert.Equal(modelo.VelocidadeAtual, veiculo.VelocidadeAtual);
         }
     }
 }
