@@ -6,17 +6,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alura.estacionamento.teste
 {
-    public class PatioTestes
+    public class PatioTestes : IDisposable
     {
+        private Veiculo veiculo;
+        public ITestOutputHelper _saidaConsoleTeste;
+        private Operador operador;
+
+        public PatioTestes(ITestOutputHelper saidaConsoleTeste)
+        {
+            _saidaConsoleTeste = saidaConsoleTeste;
+            _saidaConsoleTeste.WriteLine("Construtor Invocado.");
+            veiculo = new Veiculo();
+            operador = new Operador();
+            operador.Nome = "Pedro irineu";
+        }
+
         [Fact]
-        public void ValidaFaturamento()
+        public void ValidaFaturamentoDoEstacionamentoComUmVeiculo()
         {
             //Arrange
-            var veiculo = new Veiculo();
+            //var veiculo = new Veiculo();
             var estacionamento = new Patio();
+
+            estacionamento.OperadorPatio = operador;
 
             veiculo.Proprietario = "André Silva";
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -37,11 +53,12 @@ namespace Alura.estacionamento.teste
         [InlineData("André Silva", "ASD-1498", "preto", "Gol")]
         [InlineData("José Silva", "ASD-1497", "prata", "Uno")]
         [InlineData("Anderson Silva", "ASD-1499", "braco", "Celta")]
-        public void ValidaFaturamentoComVariosVeiculos(string proprietario, string placa, string cor, string modelo)
+        public void ValidaFaturamentoDoEstacionamentoComVariosVeiculos(string proprietario, string placa, string cor, string modelo)
         {
             //Arrange
             var estacionamento = new Patio();
-            var veiculo = new Veiculo();
+            //var veiculo = new Veiculo();
+            estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = proprietario;
             veiculo.Placa = placa;
             veiculo.Cor = cor;
@@ -58,29 +75,34 @@ namespace Alura.estacionamento.teste
         }
         [Theory]
         [InlineData("André Silva", "ASD-1498", "preto", "Gol")]
-        public void LocalizaVeiculoNoPatio(string proprietario, string placa, string cor, string modelo)
+        public void LocalizaVeiculoNoPatioComBaseNoIdDoTicket(string proprietario, string placa, string cor, string modelo)
         {
             //Arrange
             var estacionamento = new Patio();
-            var veiculo = new Veiculo();
+            estacionamento.OperadorPatio = operador;
+
+            //var veiculo = new Veiculo();
             veiculo.Proprietario = proprietario;
             veiculo.Placa = placa;
-            veiculo.Cor = cor;
             veiculo.Modelo = modelo;
 
             estacionamento.RegistrarEntradaVeiculo(veiculo);
 
             //Act 
-            var consulta = estacionamento.PesquisaVeiculo(placa);
+            var consulta = estacionamento.PesquisaVeiculo(veiculo.IdTicket);
 
             //Assert
-            Assert.Equal(placa, consulta.Placa);
+            Assert.Contains("### Ticket EStacionamento Alura ###", consulta.Ticket);
         }
-        public void AlterarDadosVEiculos()
+
+        [Fact]
+        public void AlterarDadosVeiculosDoProprioVeiculo()
         {
             //Arrange
-            var veiculo = new Veiculo();
+            // var veiculo = new Veiculo();
             var estacionamento = new Patio();
+
+            estacionamento.OperadorPatio = operador;
 
             veiculo.Proprietario = "André Silva";
             veiculo.Cor = "Verde";
@@ -88,13 +110,14 @@ namespace Alura.estacionamento.teste
             veiculo.Placa = "asd-9999";
 
             estacionamento.RegistrarEntradaVeiculo(veiculo);
+
             //Arrange
             var veiculoAlterado = new Veiculo();
 
-            veiculo.Proprietario = "André Silva";
-            veiculo.Cor = "preto";
-            veiculo.Modelo = "Fusca";
-            veiculo.Placa = "asd-9999";
+            veiculoAlterado.Proprietario = "André Silva";
+            veiculoAlterado.Cor = "preto";
+            veiculoAlterado.Modelo = "Fusca";
+            veiculoAlterado.Placa = "asd-9999";
 
             //Act
             Veiculo alterado = estacionamento.AlterarVeiculo(veiculoAlterado);
@@ -103,23 +126,9 @@ namespace Alura.estacionamento.teste
             Assert.Equal(alterado.Cor, veiculoAlterado.Cor);
         }
 
-        [Fact]
-        public void DadosVeiculo()
+        public void Dispose()
         {
-            //Arrange 
-            var carro = new Veiculo();
-            carro.Proprietario = "Carlos SIlva";
-            carro.Tipo = TipoVeiculo.Automovel;
-            carro.Placa = "Zap-7419";
-            carro.Cor = "Preto";
-            carro.Modelo = "Variante";
-
-            //Act
-            string dados = carro.ToString();
-
-            //Assert 
-            //verifica se contêm 
-            Assert.Contains("Ficha do veículo: ", dados);
+            _saidaConsoleTeste.WriteLine("Dispose Invocado.");
         }
     }
 }

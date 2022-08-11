@@ -302,7 +302,119 @@ Conforme aprendemos, o TDD é uma maneira de pensar o desenvolvimento de uma apl
 
 
 Com base nisso, assinale a alternativa correta.
-### O que aprendemos?
+
+- O TDD colabora para o desenvolvimento de um código com mais qualidade, já que a pessoa desenvolvedora escreverá funcionalidades testadas. O TDD guia todo o desenvolvimento com base nos testes a serem desenvolvidos antes de qualquer funcionalidade, portanto as funcionalidades escritas já estarão testadas.
+
+
+### Boas Práticas com Testes
+
+É interessante que os nomes dos metodos das classes de testes sejam autodescritivos 
+
+A adoção de boas práticas de desenvolvimento é sempre recomendada, pois ajuda na manutenção de um código mais organizado e na evolução da solução em desenvolvimento. Se tratando de testes, isso não é diferente. Há uma recomendação relacionada ao nome dos testes.
+
+Com base nesta informação, assinale as alternativas corretas.
+
+- Apesar de não existir uma regra de como nomear um método de teste, podemos combinar com a equipe a melhor maneira para isso, levando em conta que o nome seja significativo, que seja possível identificar o que está sendo testado, parâmetros de entrada e o que espera-se da saída da execução do método, para saber se ele executa adequadamente. Quanto mais informações extrairmos na leitura do nome de um método de teste, mais fácil se tornará a manutenção do código e a produtividade ao trabalhar com ele.
+
+- Como uma boa prática, é recomendado que ao se nomear um teste seja possível saber com clareza qual o comportamento esperado para determinado cenário. O nome do teste deve ser objetivo e determinar o que está em teste e o resultado esperado.
+
+## Extra - Boa prática
+
+Definir a instância como propriedade e inicializala no contrutor da classe, para evitar ficar instanciando a mesma clsse em todos os métodos
+
+Conceito de Setup 
+
+````cs
+private Veiculo veiculo;
+
+        public VeiculoTestes()
+        {
+            veiculo = new Veiculo();
+        }`
+````
+
+
+## Testtando exceções 
+
+````cs 
+ public void TestarNomePropriedadeVeiculoComMenosDeTresCaracteres()
+        {
+            //Arrange
+            string nomeProprietario = "Ab";
+
+            //Assert
+            Assert.Throws<System.FormatException>(
+            //Act
+            () => new Veiculo(nomeProprietario));
+        }
+````
+
+Usar Assert.Throws
+
+## Testando exceções
+
+Imagine que um aplicativo precisa realizar o download de um arquivo de determinado diretório. Quem desenvolve precisa validar se o diretório existe, se ele ainda tem permissão de acesso, dentre outras verificações. Não conferir nada disso pode gerar algum comportamento inesperado durante a utilização do software, mas a maioria das linguagens de programação já trazem recursos que nos ajudam nestas validações: as exceções. No desenvolvimento baseado em testes é altamente recomendável que as exceções geradas pela aplicação também sejam testadas.
+
+Sendo assim, assinale a alternativa correta sobre testes de exceções.
+
+- No xUnit podemos testar exceções usando o método ````Assert.Throws<Exception>````, no qual passamos como parâmetro a função que deve gerar a exceção. No xUnit, para testar exceções usamos o ````Assert.Throws<Exception>````.
+
+## Teste de regrassão
+Ao implementar uma novo funcionalidade em uma das classes com testes implicará na falha dos outros teste e será necessário adequalos 
+.....
+
+## Testando métodos privados 
+
+Verificar se esse método é ultilizado em um método público, que por consequência o privado será testado tbm 
+
+## Faça como eu fiz: Testando métodos privados
+
+No desenvolvimento da nossa solução para gerenciar um estacionamento criamos métodos novos nas classes de modelo, que surgiram da necessidade de implementar novos requisitos de acordo com a demanda do dono do produto. Durante este processo, é natural haver alguns métodos de classe com visibilidade privada.
+
+Mas então surge a dúvida: como podemos testar esses métodos se eles não são visíveis no projeto de testes?
+
+Vamos olhar o método GerarTicket da classe Patio. Ele foi definido como um método privado, ou seja, é usado internamente na classe.
+
+````cs
+       private string GerarTicket(Veiculo veiculo){
+            string identificador = new Guid().ToString().Substring(0, 5);
+            veiculo.IdTicket = identificador;
+            string ticket = "### Ticket Estacionameno Alura ###" +
+                           $">>> Identificador: {identificador}" +
+                           $">>> Data/Hora de Entrada: {DateTime.Now}" +
+                           $">>> Placa Veículo: {veiculo.Placa}";
+            return ticket;
+        }
+````
+
+Podemos ficar tentados a mudar a visibilidade dele para poder testá-lo, porém, isso não é recomendado, já que iria contra conceitos como encapsulamento e visibilidade.
+
+Ao analisar o cenário, identificamos que o método RegistrarEntradaVeiculo, que está sendo testado indiretamente, faz uso do GerarTicket.
+
+````cs
+       public void RegistrarEntradaVeiculo(Veiculo veiculo)
+        {
+            veiculo.HoraEntrada = DateTime.Now;
+            veiculo.Ticket = this.GerarTicket(veiculo);
+            this.Veiculos.Add(veiculo);            
+        }
+````
+
+Note que o RegistrarEntradaVeiculo é um método público, enxergado pelo projeto de teste. Portanto, a maneira de testar um método privado será utilizá-lo em algum método público.
+
+
+## O que testar?
+
+É importante, antes de escrevermos uma classe de teste ou um método de teste, analisarmos a real necessidade daquele teste. Ele vai agregar valor para mim, para o meu trabalho? Ou vou perder tempo desenvolvendo um código de teste, que vai agregar muito pouco ou nenhum valor para o que eu estou fazendo? São questionamentos importantes a serem feitos durante o desenvolvimento dos códigos do nosso teste.
+
+Testar uma aplicação é importante para podermos confiar que o que desenvolvemos irá funcionar adequadamente e atendendo aos requisitos definidos pelo usuário. No entanto, quando guiamos o desenvolvimento de nossas soluções com base nos testes, nos deparamos com algumas questões de grande relevância.
+
+Sobre as questões que lidamos ao realizar testes, marque as alternativas corretas.
+
+- O importante é priorizar os requisitos de alto valor para o usuário e garantir que eles estejam devidamente testados. Testar tudo que é possível em um software é tentador, mas o importante e guiar o desenvolvimento e os testes para funcionalidades de maior valor para nosso cliente.
+- Durante a criação dos testes, é importante analisar quais funcionalidades precisam realmente ser testadas para não desperdiçar esforço e tempo. Nem sempre precisaremos testar todas as funcionalidades desenvolvidas em uma aplicação.
+
+## O que aprendemos?
 
 - Podemos usar o Visual Studio Community para configurar um projeto de teste;
 - Podemos utilizar a CLI, a linha de comando, para criar e configurar nossa solução e projeto de teste;
@@ -317,3 +429,16 @@ Com base nisso, assinale a alternativa correta.
 - O conceito do TDD e como aplicá-lo, guiando o desenvolvimento da nossa solução de estacionamento com base no teste;
 - De acordo com o desenvolvimento orientado por testes, primeiro escrevemos o teste e depois a implementação da funcionalidade;
 - A prática do TDD pode ajudar no aprimoramento dos comportamentos de uma classe.
+
+- Boas práticas na nomeação de métodos de testes podem facilitar o entendimento do que estamos testando;
+- Para seguir as boas práticas de nomenclatura, podemos precisar refatorar os nomes de nossos métodos de testes;
+- Os conceitos de Setup e Cleanup na escrita de métodos de testes permitem otimizar a escrita de nossos códigos, reaproveitando-os;
+- Usamos o ITestOutputHelper para escrever no console do gerenciador de testes.
+
+- Criamos um método de teste para testar exceções mapeadas no desenvolvimento da aplicação;
+- Conseguimos passar um método a ser testado para o Assert.Throws, que é o método do xUnit para testarmos as exceções;
+- Nos testes de regressão adicionamos novas funcionalidades à aplicação “quebrando” testes que já funcionavam;
+- Para a evolução da aplicação não regredir,conforme implementamos novas funções, precisamos sempre fazer testes.
+
+- Podemos testar um método privado por meio da chamada de um método público que o utiliza. Assim não contrariamos os conceitos de encapsulamento e visibilidade;
+- Devemos analisar a necessidade da criação de códigos de testes para cada funcionalidade, assim não fazemos testes desnecessários, apenas os fundamentais.
