@@ -1,4 +1,4 @@
-# Testes em .NET: testando software Testes em .NET: testando software
+# Testes em .NET: testando software
 
 ## Criando um projeto com testes
 

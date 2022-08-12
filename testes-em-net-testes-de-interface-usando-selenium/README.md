@@ -1,4 +1,4 @@
-# Testes em .NET: testes de interface usando Selenium Testes em .NET: testes de interface usando Selenium
+# Testes em .NET: testes de interface usando Selenium
 
 ## Teste de interface/and to and
 
