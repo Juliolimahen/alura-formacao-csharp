@@ -166,6 +166,107 @@ Portanto, toda conexão usando HTTP retornará algum status de sucesso ou falha 
 
 - <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status">Códigos de status de respostas HTTP.</a>
 
+## CssSelector  
+
+Douglas, estagiário, está desenvolvendo um teste de interface usando C# e Selenium para uma aplicação cliente do escritório de desenvolvimento em que trabalha. A aplicação é um e-commerce de uma floricultura. Douglas precisa testar o formulário de contato, contudo após a análise do HTML do formulário, ele notou que os elementos não possuem ID ou Name, o que dificulta a identificação do elemento para o código C#. Das opções disponíveis para identificação de um elemento HTML usando o Selenium WebDriver, marque a opção que melhor atende nosso amigo Douglas:
+
+Assinale a alternativa correta.
+
+- Uma opção que pode atender Douglas é realizar uma busca pelo elemento Css usando o código como em driver.FindElement(By.CssSelector(" css do elemento")).
+
+- Usando o WebDriver, temos à disposição o By.CssSelector, muito útil quando não conseguimos usar as opções por Id ou Name.
+
+## Para saber mais: O que é Css?
+
+O CSS ou simplesmente Cascading Style Sheets é uma linguagem de estilização usada para definir a apresentação de páginas HTML. No CSS vamos definir cores, tamanhos, posicionamento, entre outros. O Css é um padrão internacional também mantido pelo W3C.
+
+O CSS é executado no lado cliente (client-side), ou seja, a interpretação do documento é feita pelo browser do usuário, não sendo necessário nenhum tipo de servidor web para visualização.
+
+alt text: A imagem mostra arquivos com extensão .html e .css para estilização de um site.
+
+O objetivo do Css é informar ao navegador como ele apresentará o HTML da página. A sua sintaxe básica é:
+
+alt text: A imagem mostra a sintaxe básica de um css. seletor abre chaves propriedade dois pontos valor ponto e vírgula e fecha chaves.
+
+No Css, o seletor "seleciona" o elemento HTML usando o atributo Class=“...” ou ID=“...”, mas também podemos identificar o nome da tag como ````<H1>````, ````<Title>````ou ````<p>````. A propriedade é o elemento que vamos estilizar, já o valor é o que atribuímos à propriedade. Como podemos ver no exemplo da imagem abaixo:
+
+````css
+h1{
+    font-family: 'Franklin Gothic';
+    font-size: 30px;
+    color: aqua;
+}
+````
+
+Para a estilização de uma página usando o css, podemos aplicar inline, interno e arquivo externo.
+
+No css inline, aplicamos o estilo diretamente ao elemento HTML, como no exemplo abaixo estamos estilizando a tag h1:
+
+````html
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>O que é Css?</title>
+</head>
+<body>
+    <!-- css inline -->
+    <h1 style="font-size: 30px;color: blue; margin: 0;">Mas o que é Css?</h1>
+</body>
+</html>
+````
+
+Na estilização usando o css interno, definimos uma tag style no head do documento html, como no exemplo abaixo:
+
+````html
+<!DOCTYPE html>
+<head>
+    <style>
+        /* Css interno */
+        h1{
+            font-size: 30px;
+            color: blue;
+            margin: 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>O que é Css?</title>
+</head>
+<body>
+    <h1>Mas o que é Css?</h1>
+</body>
+</html>
+````
+Na utilização de um arquivo externo, podemos centralizar a manutenção do css de uma aplicação em um só local, o que facilita bastante. Observe o exemplo abaixo:
+
+````css
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: aqua;
+}
+````
+
+````html
+
+<!DOCTYPE html>
+<head>
+     <meta charset="UTF-8">
+     <link rel="stylesheet" href="/css/estilo.css">
+    <title>O que é Css?</title>
+</head>
+<body>
+    <h1>Mas o que é Css?</h1>
+</body>
+</html>
+````
+
+Para maior aprofundamento do tema Css, acesse os links abaixo:
+<a href="https://www.alura.com.br/artigos/html-css-e-js-definicoes">HTML, CSS e Javascript, quais as diferenças?</a>
+<a heref="https://www.alura.com.br/artigos/o-que-e-reset-css">Reset CSS: O que é, Exemplos, Como Criar e Utilizar</a>
+
+## Capturando mais elementos
+
+
 ## O que Aprendemos?
 
 - Conhecemos o projeto que iremos trabalhar neste curso o Alura.ByteBank.WebApp;
