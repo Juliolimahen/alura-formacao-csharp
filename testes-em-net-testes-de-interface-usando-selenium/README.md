@@ -264,8 +264,43 @@ Para maior aprofundamento do tema Css, acesse os links abaixo:
 <a href="https://www.alura.com.br/artigos/html-css-e-js-definicoes">HTML, CSS e Javascript, quais as diferenças?</a>
 <a heref="https://www.alura.com.br/artigos/o-que-e-reset-css">Reset CSS: O que é, Exemplos, Como Criar e Utilizar</a>
 
-## Capturando mais elementos
 
+## Page Objects
+
+Criar classe responsável por encapsular os elementos da interface
+
+Abstrair ao maximo o código, para que seja possível fazer alteração em partes especificas alterando o menos codigo possível  
+
+Manter o codigo mais fácil 
+
+
+### Usando Page Objects
+
+Nosso amigo, Douglas, agora dev júnior, ficou responsável por escrever os testes de interface usando Selenium WebDriver e c# para uma aplicação Web voltada para o ramo da saúde. Douglas já escreveu testes para validação de login, formulário de cadastro de prontuários e do gerenciador de relatórios em um total de 40 testes.
+
+No intuito de utilizar boas práticas, ele está refatorando seus testes para aplicar Page Objects. Qual benefício Douglas pode obter na adoção deste padrão?
+
+Assinale a alternativa correta:
+
+- Douglas terá a separação do código do Selenium Webdriver do código de teste, logo, alterações de algum elemento de interface terão impacto reduzido nos testes já escritos e manutenções futuras serão mais facilitadas por serem realizadas em um único local, nas Page Objects criadas. Usar Page Objects permitirá que tenhamos um único arquivo que conhece e representa os elementos HTML da página, facilitando manutenções futuras. Além disso, a responsabilidade de conhecer o HTML da página fica encapsulado em uma classe.
+
+## Para saber mais: Padrões de projeto
+
+Na aula é mencionado o termo “padrões de projeto” quando falamos de Page Objects, mas o que é um padrão de projeto? Um padrão de projeto ou Design Patterns são soluções e estratégias de implementação que podemos aplicar no desenvolvimento de um software com objetivo de propor uma solução para um problema já conhecido e vivenciado por desenvolvedores mais experientes a fim de ajudar quem está iniciando.
+
+Os Design Patterns são um catálogo de padrões, que teve inspiração na engenharia tradicional e foi proposto pelo desenvolvedor Christopher Alexander no fim da década de 1970. Para Alexander: “Um padrão descreve um problema recorrente em determinado contexto, e deve descrever uma solução para esse problema, de modo que essa solução possa ser utilizada sistematicamente em distintas situações”.
+
+Baseando-se nos trabalhos de Alexander, em 1995, Eric Gamma, Richard Helm, Ralph Johnson e John Vlissides, que ficaram conhecidos como a “Gangue dos 4”, publicaram o livro “Design Patterns: Elements of Reusable Object-Oriented Software” que compila 23 padrões frutos da experiência dos autores - livro este que inclusive é referência na comunidade de tecnologia.
+
+Com o passar do tempo, essa ideia de padrões de projeto foi amplamente difundida pela comunidade de tecnologia que catalogou e desenvolveu outros padrões como os Page Objects, por exemplo. Vale ressaltar que os padrões de projeto são soluções que podem ser aplicadas em diversas linguagens como Java, Python, Lua, Objective C, PHP, entre outras.
+
+Para se aprofundar ainda mais neste tema, fica a recomendação abaixo:
+
+- <a href="https://www.alura.com.br/artigos/design-patterns-introducao-padroes-projeto">Design patterns: Breve introdução aos padrões de projeto</a>
+- <a href="https://www.alura.com.br/podcast/hipsterstech-design-patterns-hipsters-206-a345">Design Patterns - Hipsters#206</a>
+- <a href="https://www.alura.com.br/curso-online-design-patterns-dotnet">Curso Design Patterns C# I: Boas práticas de programação</a>
+
+## Boas práticas
 
 ## O que Aprendemos?
 
@@ -282,3 +317,12 @@ Para maior aprofundamento do tema Css, acesse os links abaixo:
 - Capturar o elemento html para um código C# para a escrita do código de testes;
 - Manipular campos de texto dentro de uma aplicação usando Selenium WebDriver para testar a interação de um formulário;
 - Validar urls restritas de uma aplicação com foco em validar questões como segurança da aplicação.
+
+- Outras formas de capturar os elementos de uma página HTML para não ficarmos restritos ao Id ou Name;
+- Criar uma lista de elementos que estão na página usando a biblioteca do Selenium WebDriver, o que pode deixar nosso código mais dinâmico;
+- Escrever no console do gerenciador de testes usando recursos do próprio xUnit.
+
+- O que são Page Objects e como esse padrão pode ser útil para manutenção do código de testes;
+- Usar Page Objects para separar o código do Selenium WebDriver do código de teste, deixando mais limpo e orientado à objetos;
+- Criar uma estratégia de código que permita a gerência do navegador, possibilitando a otimização deste recurso;
+- Podemos adotar boas práticas que nos ajudem a otimizar o código de teste e aplicar padrão recomendado pelo próprio Selenium.

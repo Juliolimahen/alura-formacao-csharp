@@ -16,12 +16,14 @@ namespace Alura.ByteBank.Apresentacao.Comandos
     {
         IContaCorrenteRepositorio _repositorio;
         IContaCorrenteServico _servico;
+        IClienteServico _cliente;
+        IAgenciaServico _agencia;
         ContaCorrenteServicoApp contaCorrenteServicoApp;
         public ContaCorrenteComando()
         {
             _repositorio = new ContaCorrenteRepositorio();
             _servico = new ContaCorrenteServico(_repositorio);
-            contaCorrenteServicoApp = new ContaCorrenteServicoApp(_servico);
+            contaCorrenteServicoApp = new ContaCorrenteServicoApp(_servico, _agencia, _cliente);
         }
 
         public bool Adicionar(ContaCorrenteDTO conta)

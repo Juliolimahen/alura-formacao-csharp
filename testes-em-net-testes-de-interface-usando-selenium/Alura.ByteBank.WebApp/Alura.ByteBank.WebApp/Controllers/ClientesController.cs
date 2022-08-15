@@ -9,23 +9,33 @@ using Alura.ByteBank.Dados.Contexto;
 using Alura.ByteBank.Dominio.Entidades;
 using Alura.ByteBank.Dados.Repositorio;
 using Microsoft.AspNetCore.Authorization;
+using Alura.ByteBank.Aplicacao.AplicacaoServico;
+using Alura.ByteBank.Dominio.Interfaces.Servicos;
+using Alura.ByteBank.Dominio.Interfaces.Repositorios;
+using Alura.ByteBank.Dominio.Services;
+using Alura.ByteBank.Aplicacao.DTO;
 
 namespace Alura.ByteBank.WebApp.Controllers
 {
     
     public class ClientesController : Controller
     {
-        private ClienteRepositorio _context;
-        public ClientesController()
+        
+        private readonly IClienteRepositorio _repositorio;
+        private readonly IClienteServico _servico;
+        private readonly ClienteServicoApp clienteServicoApp;
+        public ClientesController(IClienteRepositorio repositorio)
         {
-            _context = new ClienteRepositorio();
+            _repositorio = repositorio;
+            _servico = new ClienteServico(_repositorio);
+            clienteServicoApp = new ClienteServicoApp(_servico);
         }
 
         // GET: Clientes
         [Authorize]
         public IActionResult Index()
         {
-            return View( _context.ObterTodos());
+            return View(clienteServicoApp.ObterTodos());
         }
 
         // GET: Clientes/Details/5
@@ -37,7 +47,7 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var cliente = _context.ObterPorId(id);
+            var cliente = clienteServicoApp.ObterPorId(id);
                 
             if (cliente == null)
             {
@@ -57,11 +67,11 @@ namespace Alura.ByteBank.WebApp.Controllers
         // POST: Clientes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]       
-        public ActionResult Create([Bind("Id,Identificador,CPF,Nome,Profissao")] Cliente cliente)
+        public ActionResult Create([Bind("Id,Identificador,CPF,Nome,Profissao")] ClienteDTO cliente)
         {
             if (ModelState.IsValid)
             {
-                _context.Adicionar(cliente);               
+                clienteServicoApp.Adicionar(cliente);               
                 return RedirectToAction(nameof(Index));
             }
             return View(cliente);
@@ -76,7 +86,7 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var cliente = _context.ObterPorId(id);
+            var cliente = clienteServicoApp.ObterPorId(id);
             if (cliente == null)
             {
                 return NotFound();
@@ -88,7 +98,7 @@ namespace Alura.ByteBank.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit(int id, [Bind("Id,Identificador,CPF,Nome,Profissao")] Cliente cliente)
+        public ActionResult Edit(int id, [Bind("Id,Identificador,CPF,Nome,Profissao")] ClienteDTO cliente)
         {
             if (id != cliente.Id)
             {
@@ -99,7 +109,7 @@ namespace Alura.ByteBank.WebApp.Controllers
             {
                 try
                 {
-                    _context.Atualizar(id,cliente);                   
+                    clienteServicoApp.Atualizar(id,cliente);                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,14 +136,14 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var cliente = _context.ObterPorId(id);
+            var cliente = clienteServicoApp.ObterPorId(id);
               
             if (cliente == null)
             {
                 return NotFound();
             }
 
-            _context.Excluir(id);
+            clienteServicoApp.Excluir(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -143,13 +153,13 @@ namespace Alura.ByteBank.WebApp.Controllers
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            var cliente = _context.ObterPorId(id);
-            _context.Excluir(id);     
+            var cliente = clienteServicoApp.ObterPorId(id);
+            clienteServicoApp.Excluir(id);     
             return RedirectToAction(nameof(Index));
         }
 
         private bool ClienteExists(int id) {
-            var cliente = _context.ObterPorId(id);
+            var cliente = clienteServicoApp.ObterPorId(id);
             return cliente == null ? true : false;
         }
     }

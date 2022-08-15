@@ -114,7 +114,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
         {
             //Arrange
             //Act
-            var atualizado = _repositorio.Excluir(4);
+            var atualizado = _repositorio.Excluir(2);
 
             //Assert
             Assert.True(atualizado);

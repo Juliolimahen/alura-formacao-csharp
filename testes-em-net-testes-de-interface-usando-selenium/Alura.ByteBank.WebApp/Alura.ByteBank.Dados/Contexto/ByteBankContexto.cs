@@ -13,7 +13,8 @@ namespace Alura.ByteBank.Dados.Contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string stringconexao = "Server=127.0.0.1;Port=3306;Database=ByteBank;Uid=root;Pwd=281004;";
+            string stringconexao = "Server=127.0.0.1;Port=3306;Database=ByteBank;Uid=root;Pwd=281004";
+
             optionsBuilder.UseMySql(stringconexao,
                                     ServerVersion.AutoDetect(stringconexao));
         }

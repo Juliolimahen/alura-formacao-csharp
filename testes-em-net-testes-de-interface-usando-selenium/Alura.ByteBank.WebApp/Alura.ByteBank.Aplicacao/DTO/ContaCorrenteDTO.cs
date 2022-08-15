@@ -29,5 +29,7 @@ namespace Alura.ByteBank.Aplicacao.DTO
                    $"Id Conta: {this.Identificador}\n" +
                    $"Titular Conta(Cliente): {this.Cliente.Nome}";
         }
+
+        public Guid PixConta { get; set; }
     }
 }

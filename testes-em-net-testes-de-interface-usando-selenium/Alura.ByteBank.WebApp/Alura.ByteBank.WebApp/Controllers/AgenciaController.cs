@@ -1,9 +1,16 @@
-﻿using Alura.ByteBank.Dados.Repositorio;
+﻿using Alura.ByteBank.Aplicacao.AplicacaoServico;
+using Alura.ByteBank.Aplicacao.DTO;
+using Alura.ByteBank.Aplicacao.Interfaces;
+using Alura.ByteBank.Dados.Repositorio;
 using Alura.ByteBank.Dominio.Entidades;
+using Alura.ByteBank.Dominio.Interfaces.Repositorios;
+using Alura.ByteBank.Dominio.Interfaces.Servicos;
+using Alura.ByteBank.Dominio.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +20,29 @@ namespace Alura.ByteBank.WebApp.Controllers
 {
     public class AgenciaController : Controller
     {
-        // GET: AgenciaController
-        private AgenciaRepositorio repositorio;
-        public AgenciaController()
+        // GET: AgenciaController    
+        private readonly IAgenciaRepositorio _repositorio;
+        private readonly IAgenciaServico _servico;
+        private readonly IAgenciaServicoApp agenciaServicoApp;
+
+        public AgenciaController(IAgenciaRepositorio repositorio)
         {
-            repositorio = new AgenciaRepositorio();
+            _repositorio = repositorio;
+            _servico = new AgenciaServico(_repositorio);
+            agenciaServicoApp = new AgenciaServicoApp(_servico);
         }
 
         [Authorize]
         public ActionResult Index()
         {
-            return View(repositorio.ObterTodos());
+            return View(agenciaServicoApp.ObterTodos());
         }
 
         // GET: AgenciaController/Details/5
         [Authorize]
         public ActionResult Details(int id)
         {
-            var agencia = repositorio.ObterPorId(id);
+            var agencia = agenciaServicoApp.ObterPorId(id);
             return View(agencia);
         }
 
@@ -45,11 +57,11 @@ namespace Alura.ByteBank.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind("Id,Identificador,Numero,Nome,Endereco")] Agencia agencia)
+        public ActionResult Create([Bind("Id,Identificador,Numero,Nome,Endereco")] AgenciaDTO agencia)
         {
             try
             {
-                repositorio.Adicionar(agencia);
+                agenciaServicoApp.Adicionar(agencia);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -68,7 +80,7 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var agencia = repositorio.ObterPorId(id);
+            var agencia = agenciaServicoApp.ObterPorId(id);
             if (agencia == null)
             {
                 return NotFound();
@@ -80,7 +92,7 @@ namespace Alura.ByteBank.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit(int id, [Bind("Id,Identificador,Numero,Nome,Endereco")] Agencia agencia)
+        public ActionResult Edit(int id, [Bind("Id,Identificador,Numero,Nome,Endereco")] AgenciaDTO agencia)
         {
           
             if (id != agencia.Id)
@@ -92,7 +104,7 @@ namespace Alura.ByteBank.WebApp.Controllers
             {
                 try
                 {
-                    repositorio.Atualizar(id, agencia);
+                    agenciaServicoApp.Atualizar(id, agencia);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,14 +127,14 @@ namespace Alura.ByteBank.WebApp.Controllers
         public ActionResult Delete(int id)
         {
        
-            var agencia = repositorio.ObterPorId(id);
+            var agencia = agenciaServicoApp.ObterPorId(id);
 
             if (agencia == null)
             {
                 return NotFound();
             }
 
-            repositorio.Excluir(id);
+            agenciaServicoApp.Excluir(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -132,14 +144,14 @@ namespace Alura.ByteBank.WebApp.Controllers
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            var agencia = repositorio.ObterPorId(id);
-            repositorio.Excluir(id);
+            var agencia = agenciaServicoApp.ObterPorId(id);
+            agenciaServicoApp.Excluir(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool AgenciaExists(int id)
         {
-            var agencia = repositorio.ObterPorId(id);
+            var agencia = agenciaServicoApp.ObterPorId(id);
             return agencia == null ? true : false;
         }
     }

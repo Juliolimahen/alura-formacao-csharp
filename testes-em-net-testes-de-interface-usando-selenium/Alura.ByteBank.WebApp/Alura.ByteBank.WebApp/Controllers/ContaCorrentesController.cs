@@ -9,23 +9,38 @@ using Alura.ByteBank.Dados.Contexto;
 using Alura.ByteBank.Dominio.Entidades;
 using Alura.ByteBank.Dados.Repositorio;
 using Microsoft.AspNetCore.Authorization;
+using Alura.ByteBank.Dominio.Interfaces.Repositorios;
+using Alura.ByteBank.Dominio.Interfaces.Servicos;
+using Alura.ByteBank.Aplicacao.AplicacaoServico;
+using Alura.ByteBank.Dominio.Services;
+using Alura.ByteBank.Aplicacao.DTO;
 
 namespace Alura.ByteBank.WebApp.Controllers
 {
     
     public class ContaCorrentesController : Controller
     {
-        private ContaCorrenteRepositorio _context;
+        private readonly IContaCorrenteRepositorio _repositorio;
+        private readonly IContaCorrenteServico _servico;
+        private readonly IClienteServico _servicoCliente;
+        private readonly IAgenciaServico _servicoAgencia;
+        private readonly ContaCorrenteServicoApp contaCorrenteServicoApp;
 
-        public ContaCorrentesController()
+        public ContaCorrentesController(IContaCorrenteRepositorio repositorio,
+                                        IClienteRepositorio repositorioCliente,
+                                        IAgenciaRepositorio repositorioAgencia)
         {
-            _context = new ContaCorrenteRepositorio();
+            _repositorio = repositorio;
+            _servico = new ContaCorrenteServico(_repositorio);
+            _servicoCliente = new ClienteServico(repositorioCliente);
+            _servicoAgencia = new AgenciaServico(repositorioAgencia); ;
+            contaCorrenteServicoApp = new ContaCorrenteServicoApp(_servico, _servicoAgencia, _servicoCliente);
         }
         [Authorize]
         // GET: ContaCorrentes
         public ActionResult Index()
         {
-            return View( _context.ObterTodos());
+            return View(contaCorrenteServicoApp.ObterTodos());
         }
 
         [Authorize]
@@ -37,7 +52,7 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var contaCorrente =  _context.ObterPorId(id);
+            var contaCorrente = contaCorrenteServicoApp.ObterPorId(id);
                 
             if (contaCorrente == null)
             {
@@ -57,11 +72,11 @@ namespace Alura.ByteBank.WebApp.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Numero,Identificador,Saldo,PixConta")] ContaCorrente contaCorrente)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,AgenciaId,Numero,Identificador,Saldo,PixConta")] ContaCorrenteDTO contaCorrente)
         {
             if (ModelState.IsValid)
             {
-                _context.Adicionar(contaCorrente);                
+                contaCorrenteServicoApp.Adicionar(contaCorrente);                
                 return RedirectToAction(nameof(Index));
             }
             return View(contaCorrente);
@@ -76,7 +91,7 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var contaCorrente = _context.ObterPorId(id); ;
+            var contaCorrente = contaCorrenteServicoApp.ObterPorId(id); ;
             if (contaCorrente == null)
             {
                 return NotFound();
@@ -88,7 +103,7 @@ namespace Alura.ByteBank.WebApp.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("Id,Numero,Identificador,Saldo,PixConta")] ContaCorrente contaCorrente)
+        public ActionResult Edit(int id, [Bind("Id,ClienteId,AgenciaId,Numero,Identificador,Saldo,PixConta")] ContaCorrenteDTO contaCorrente)
         {
             if (id != contaCorrente.Id)
             {
@@ -99,7 +114,7 @@ namespace Alura.ByteBank.WebApp.Controllers
             {
                 try
                 {
-                    _context.Atualizar(id,contaCorrente);                    
+                    contaCorrenteServicoApp.Atualizar(id,contaCorrente);                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,13 +141,13 @@ namespace Alura.ByteBank.WebApp.Controllers
                 return NotFound();
             }
 
-            var contaCorrente = _context.ObterPorId(id);                
+            var contaCorrente = contaCorrenteServicoApp.ObterPorId(id);                
             if (contaCorrente == null)
             {
                 return NotFound();
             }
 
-            _context.Excluir(id);
+            contaCorrenteServicoApp.Excluir(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -142,14 +157,14 @@ namespace Alura.ByteBank.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var contaCorrente = _context.ObterPorId(id);
-            _context.Excluir(id);
+            var contaCorrente = contaCorrenteServicoApp.ObterPorId(id);
+            contaCorrenteServicoApp.Excluir(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool ContaCorrenteExists(int id)
         {
-            var contaCorrente = _context.ObterPorId(id);
+            var contaCorrente = contaCorrenteServicoApp.ObterPorId(id);
             return contaCorrente == null ? true : false;
         }
     }

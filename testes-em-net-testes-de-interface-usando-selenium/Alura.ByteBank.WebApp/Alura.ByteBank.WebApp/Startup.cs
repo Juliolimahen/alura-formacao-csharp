@@ -1,3 +1,8 @@
+using Alura.ByteBank.Aplicacao.AplicacaoServico;
+using Alura.ByteBank.Aplicacao.Interfaces;
+using Alura.ByteBank.Dados.Contexto;
+using Alura.ByteBank.Dados.Repositorio;
+using Alura.ByteBank.Dominio.Interfaces.Repositorios;
 using Alura.ByteBank.WebApp.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -27,12 +32,17 @@ namespace Alura.ByteBank.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddTransient<IAgenciaRepositorio, AgenciaRepositorio>();
+            services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+            services.AddTransient<IContaCorrenteRepositorio,ContaCorrenteRepositorio>();
+
             services.AddControllersWithViews();
             //services.AddSession();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromHours(6);
+                options.IdleTimeout = TimeSpan.FromDays(2);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
@@ -55,6 +65,8 @@ namespace Alura.ByteBank.WebApp
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
+
+              
             });
         }
 

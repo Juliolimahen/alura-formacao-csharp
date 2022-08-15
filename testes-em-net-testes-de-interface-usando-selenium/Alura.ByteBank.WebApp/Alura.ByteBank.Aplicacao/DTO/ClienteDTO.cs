@@ -17,5 +17,6 @@ namespace Alura.ByteBank.Aplicacao.DTO
         {
             Identificador = Guid.NewGuid();
         }
+        
     }
 }
