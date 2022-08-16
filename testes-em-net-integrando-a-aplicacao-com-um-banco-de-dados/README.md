@@ -145,6 +145,63 @@ Selecione quais boas práticas podem ser utilizadas no objeto.
 
 - Uma recomendação para David é usar o conceito de injeção de dependência no construtor, pois assim ele passa a depender dos comportamentos definidos em uma interface. Como esse objeto vai ser utilizado em outras partes do código, pode usar o conceito de Setup, criando as dependências em um só lugar. Como vimos nesta aula, a injeção de dependência foca no baixo acoplamento, deixando o código mais flexível a mudanças, por focarmos no comportamento presente em uma interface. Assim qualquer objeto que implementa a interface pode ser utilizado.
 
+## Operações Crud
+
+Observe o seguinte código de teste:
+
+````cs
+       [Fact]
+        public void TestaObterTodosClientes()
+        {
+            //Arrange
+            var _repositorio =  new ByteBankContexto();
+
+            //Act
+            List<Cliente> lista = _repositorio.ObterTodos();
+
+            //Assert
+            Assert.NotNull(lista);
+            Assert.Equal(3, lista.Count);
+
+        }
+````
+
+A escrita do código de teste está seguindo o padrão AAA (Arrange,Act e Assert), no último passo temos dois Assert observando este cenário.
+
+Sabendo disso, escolha as alternativas corretas.
+
+- O Segundo Assert serve para garantir que a busca está retornando 3 objetos do tipo cliente, pois somente com o Assert.NotNull() podemos ter um falso positivo, retornando uma lista que não seja nula, porém vazia. Está correto, somente o ````Assert.NotNull()```` não garante que o teste está funcionando corretamente.
+
+- Uma alternativa de Assert é a utilização do método .True, como no exemplo: ````Assert.True((lista.Count != 0));````. o Assert.True() valida uma expressão booleana no teste.
+
+## Mocks 
+
+Criar um banco de dados em memória(Dados mocados) ou um banco de dados de teste 
+
+## Stubs
+
+### Usando Mocks, Stubs e Fakes
+
+Durante o desenvolvimento dos testes de integração, talvez alguns testes utilizem a mesma base de dados ou serviço compartilhado com outros desenvolvedores ou aplicação. Isso pode interferir de maneira negativa na execução desses testes, gerando inconsistência nos dados. Para resolver a situação, podemos usar algumas abordagens, como usar uma base de homologação, bancos de dados em memória, entre outros. Dentre as opções temos a utilização de objetos mock e os stubs.
+
+Sabendo disso, marque as opções corretas.
+
+- Um stub pode ser considerado uma simplificação, que permite validar se o resultado da execução de uma função está de acordo com os parâmetros passados no teste. Um stub é mais simples e ajuda a testar retornos e comportamentos previsíveis.
+
+- Um mock tem por objetivo simular o comportamento de objetos reais, sendo úteis para remover a dependência de um serviço, como banco de dados para testes de funções, que trabalham com dados compartilhados. Um mock permite a criação de objetos falsos que simulam o comportamento de objetos reais.
+
+## Padronizando os testes
+
+A adoção de boas práticas no desenvolvimento dos testes deve ser constante, desde a forma de escrever o primeiro teste até a maneira de organizá-los. É importante que um código mantenha um padrão para termos um projeto com qualidade.
+
+Com relação a opção de padronização e boas práticas, marque a opção correta.
+
+- Uma opção na padronização do código é definir quais testes são necessários e que eles tenham nomes bastante claros para o entendimento de qualquer pessoa que trabalhe no projeto caso sejam necessárias futuras manutenções. devemos ter na suíte de testes métodos que expressem com clareza o que está sendo testado
+
+- Uma boa prática é a criação de alternativas para testes de dados compartilhados com outras pessoas e aplicações, como repositórios fakes e bancos em memória. Trabalhar com dados compartilhados exige ter alternativas para garantir a integridade dos testes e comportamentos esperados deles.
+
+
+
 ## O que aprendemos?
 
 - Configurar nosso ambiente com um banco de dados e a IDE Visual Studio Community 2019 para receber o projeto Alura.ByteBank;
@@ -156,6 +213,17 @@ Selecione quais boas práticas podem ser utilizadas no objeto.
 - Realizar uma migração que insere algumas informações nas tabelas do banco de dados usando o recurso das migrações com Entity Framework;
 - Utilizar o pacote using Microsoft.Extensions.DependencyInjection; do .NET para criar uma injeção de dependência no construtor da classe de testes.
 
+- Testar operações de Select na base de dados do MySQL por meio do Entity Framework;
+- Observar testes que passam, mas não deveriam passar (falsos positivos), como o caso de receber um objeto não-nulo, porém vazio em uma consulta à base de dados;
+- Testar operações de CRUD criando objetos e inserindo/atualizando informações no banco de dados;
+- Realizar um teste para validar as exceções que podem ocorrer ao se consultar uma informação que não existe no serviço de banco de dados.
 
-## Testando os selects
+- Configurar o projeto para utilizar a biblioteca Moq;
+- Criar um teste utilizando mock para verificar comportamentos esperados de um objeto;
+- Utilizar o conceito de stubs para testar retornos previstos de acordo com os parâmetros passados para um objeto fake;
+- Pode ser importante testar a simulação de comportamentos de sistemas que utilizam serviços compartilhados, garantindo assim que todos continuem usando estas informações sem problemas;
+- Criar repositórios de dados fakes no projeto de testes. garantindo que os dados com que trabalhamos não sejam alterados por outras pessoas ou serviços que também fazem uso da base compartilhada.
 
+- Padronizar os testes focando na nomenclatura dos métodos, já que usar nomes claros ajudará na legibilidade e nas futuras manutenções no código, caso isso seja necessário.
+- Criar um setup para nos ajudar a validar os resultados da execução usando o console do gerenciador de testes.
+- Pode ser vantajoso adotar boas práticas nos testes porque assim nosso código pode ganhar em performance. Aumentamos nossa produtividade ao conhecer padrões de desenvolvimento já utilizados, por exemplo, a injeção de dependências.
