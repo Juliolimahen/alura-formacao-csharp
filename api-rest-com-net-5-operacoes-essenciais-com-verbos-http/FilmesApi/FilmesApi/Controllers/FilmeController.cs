@@ -23,7 +23,6 @@ namespace FilmesAPI.Controllers
             _context = context;
             _mapper = mapper;
         }
-  
 
         [HttpPost]
         public IActionResult AdicionaFilme([FromBody] CreateFilmeDto filmeDto)
