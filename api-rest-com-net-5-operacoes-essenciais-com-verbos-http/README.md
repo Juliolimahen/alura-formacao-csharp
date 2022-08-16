@@ -19,9 +19,7 @@ APIs possuem finalidades específicas e diversas utilizações. Quais das altern
 
 - Controlam o que pode/deve ser acessado. Os consumidores não conseguirão acessar caminhos que não estão expostos.
 
-- As vantagens da utilização de uma API.
-- Por quê e quando utilizar/desenvolver uma API.
-- Como preparar o ambiente no Windows e Linux.
+
 
 ## Notations
 ````cs
@@ -177,8 +175,23 @@ public IEnumerable<Filme> RecuperaFilmes()
 ## Extra 
 O ideal é padronizar o retorno para que quem consumir consiga entender de forma clara o que está acontecendo 
 
+## Recebendo parâmetros na requisição
+
+Como podemos enviar parâmetros através da requisição utilizando o verbo GET?
+- Através da anotação
+````cs
+[HttpGet("{param}")]
+````
+_ Podemos utilizar a própria anotação para isso.
+
+## O que aprendemos
+
 - Como enviar requisições para a API.
 - Como preparar a API para receber requisições.
 - A finalidade do verbo POST.
 - Como criar um recurso no sistema.
 - Como adicionar validações nos parâmetros enviados.
+
+- As vantagens da utilização de uma API.
+- Por quê e quando utilizar/desenvolver uma API.
+- Como preparar o ambiente no Windows e Linux.
