@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\bin\Debug\net6.0\ExMongoDb.exe
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\bin\Debug\net6.0\ExMongoDb.deps.json
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\bin\Debug\net6.0\ExMongoDb.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\bin\Debug\net6.0\ExMongoDb.dll
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\bin\Debug\net6.0\ExMongoDb.pdb
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.dll
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\refint\ExMongoDb.dll
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.pdb
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ExMongoDb.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\ExMongoDb\obj\Debug\net6.0\ref\ExMongoDb.dll

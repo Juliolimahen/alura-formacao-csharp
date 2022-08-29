@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExemplosMongoDb": {
+      "commandName": "Project",
+      "jsWebView2Debugging": true
+    }
+  }
+}

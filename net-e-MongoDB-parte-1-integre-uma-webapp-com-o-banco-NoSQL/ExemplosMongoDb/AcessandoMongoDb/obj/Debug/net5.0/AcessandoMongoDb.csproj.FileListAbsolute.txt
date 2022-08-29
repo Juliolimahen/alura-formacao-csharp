@@ -1,0 +1,5 @@
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\AcessandoMongoDb\obj\Debug\net5.0\AcessandoMongoDb.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\AcessandoMongoDb\obj\Debug\net5.0\AcessandoMongoDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\AcessandoMongoDb\obj\Debug\net5.0\AcessandoMongoDb.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\AcessandoMongoDb\obj\Debug\net5.0\AcessandoMongoDb.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\net-e-MongoDB-parte-1-integre-uma-webapp-com-o-banco-NoSQL\ExemplosMongoDb\AcessandoMongoDb\obj\Debug\net5.0\AcessandoMongoDb.csproj.CoreCompileInputs.cache
