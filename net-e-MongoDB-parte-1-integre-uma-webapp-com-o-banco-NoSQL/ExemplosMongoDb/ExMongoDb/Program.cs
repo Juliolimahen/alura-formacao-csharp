@@ -39,6 +39,6 @@ void AcessandoMongoDbAsync()
 }
 #endregion
 
-Console.WriteLine("press enter");
-Console.ReadLine();
-AcessandoMongoDbAsync();
+var service = new LivroService();
+
+service.Main(args);

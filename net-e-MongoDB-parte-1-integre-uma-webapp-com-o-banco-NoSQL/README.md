@@ -78,6 +78,33 @@ Temos três tipos de variáveis, uma para ser usada para acesso ao servidor Mong
 
 IMongoClient é o tipo de variável usado para acesso ao servidor MongoDB, IMongoDatabase é o tipo de variável usado para acesso a uma base de dados do MongoDB e IMongoCollection é o tipo de variável usado para acesso a uma coleção do MongoDB.
 
+## Quais referências devemos adicionar?
+
+Para manipular um documento JSON pelo .NET com a biblioteca do MongoDB, para acessar o banco de dados MongoDB e para acessar os tipos especiais para associar uma propriedade da classe ao ObjectID do MongoDB, respectivamente, quais referências devemos adicionar ao código do projeto?
+
+- MongoDB.Bson, MongoDB.Driver e MongoDB.Serialization. Ao adicionar a referência MongoDB.Bson no código, as funções e procedimentos de manipulação de objetos JSON não ficam apresentando erro de compilação. A referência MongoDB.Driver é associada ao acesso à banco de dados MongoDB. E a referência MongoDB.Serialization é associada a criação de tipos especiais quando construímos classes que estarão associadas a uma coleção na base MongoDB.
+
+## Associação à propriedade de ObjectID
+
+O que devemos associar à propriedade de ObjectID na declaração da classe?
+
+- ````cs 
+    [BsonRepresentation(BsonType.ObjectId)]
+    ````
+
+Usamos a sentença ````BsonRepresentation```` e entre parênteses a declaração do tipo especial ````BsonType.ObjectId````, que irá criar o campo ````id```` contido em cada coleção de uma base MongoDB.
+
+## Declarando uma coleção no MongoDB .NET
+
+Temos uma classe chamada Aluno e queremos declarar uma coleção desse tipo no MongoDB .NET. Como essa declaração deve ser feita?
+
+- ````cs 
+        IMongoCollection<Aluno>
+  ````
+
+Para a coleção, utilizamos ````IMongoCollection````, dizendo qual será o tipo da coleção, no caso deste exercício, ````Aluno````.
+
+
 ## O que aprendemos?
 
 - Vantagens e desvantagens do MongoDB
@@ -85,3 +112,11 @@ IMongoClient é o tipo de variável usado para acesso ao servidor MongoDB, IMong
 - Como instalar e configurar o MongoDB
 - Como se conectar ao MongoDB
 - Como instalar o driver de conexão do MongoDB no Visual Studio
+
+- Como verificar os drivers do MongoDB no projeto
+- Diferença entre programação síncrona e assíncrona
+- Como manipular elementos JSON utilizando o .NET
+- Como acessar o MongoDB com o BSON
+- Tipos de variáveis do MongoDB
+- Como utilizar o modelo OO com o MongoDB
+- Como declarar coleções no MongoDB
