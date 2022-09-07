@@ -210,6 +210,10 @@ public class EmpregadoManager
 
 - EmpregadoDao. Essa classe é a mais instável de todas as que estão listadas aqui. Sabe porquê? Spoiller: veja o próximo vídeo.
 
+## Acoplamentos
+
+Acoplamento diz respeito à dependência entre dois tipos. Num sistema orientado a objetos os acoplamentos são inevitáveis. O que devemos fazer é cuidar de sua qualidade. Acoplamentos bons são aqueles para tipos estáveis (que não vão mudar ou tem alta probabilidade de não mudar). Candidatos a tipos estáveis são aqueles que fazem parte da plataforma .NET e de APIs muito usadas. Acoplamentos ruins são aqueles para tipos instáveis. Exemplos dessa categoria são os tipos criados especificamente para nossa aplicação e principalmente implementações para mecanismos específicos (no nosso exemplo o LeilaoDaoComEfCore).
+
 ## O que aprendemos?
 
 - Nosso projeto de software pode estagnar e até morrer caso não nos preocupemos com a qualidade de seu código
@@ -226,6 +230,8 @@ public class EmpregadoManager
 - a responsabilidade de um método é executar uma única função
 - a responsabilidade de uma classe é responder a mudanças originadas por uma única pessoa, função ou área de negócio (agente de mudança)
 - essas idéias foram sintetizadas no Princípio da Responsabilidade Única (SRP) cunhado por Robert Martin
+
+
 
 Perguntas:
 

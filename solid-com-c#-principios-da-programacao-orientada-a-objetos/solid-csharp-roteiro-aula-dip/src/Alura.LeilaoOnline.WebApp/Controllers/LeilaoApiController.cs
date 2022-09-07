@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Alura.LeilaoOnline.WebApp.Models;
 using Alura.LeilaoOnline.WebApp.Dados;
-using System;
-using System.Collections.Generic;
 
 namespace Alura.LeilaoOnline.WebApp.Controllers
 {
@@ -11,13 +9,11 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
     [Route("/api/leiloes")]
     public class LeilaoApiController : ControllerBase
     {
-        AppDbContext _context;
-        LeilaoDao _dao;
+        ILeilaoDao _dao;
 
-        public LeilaoApiController()
+        public LeilaoApiController(ILeilaoDao dao)
         {
-            _context = new AppDbContext();
-            _dao = new LeilaoDao();
+            _dao = dao;
         }
 
         [HttpGet]
@@ -38,7 +34,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
         [HttpPost]
         public IActionResult EndpointPostLeilao(Leilao leilao)
         {
-            _dao.IncluirLeilao(leilao);
+            _dao.Incluir(leilao);
             return Ok(leilao);
         }
 
@@ -46,7 +42,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
         public IActionResult EndpointPutLeilao(Leilao leilao)
         {
             if (_dao.BuscarLeilaoPorId(leilao.Id) == null) return NotFound();
-            _dao.AlterarLeilao(leilao);
+            _dao.Alterar(leilao);
             return Ok(leilao);
         }
 
@@ -56,7 +52,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
             var leilao = _dao.BuscarLeilaoPorId(id);
             if (leilao == null) return NotFound();
             if (leilao.Situacao == SituacaoLeilao.Pregao) return StatusCode(405);
-            _dao.ExcluirLeilao(leilao);
+            _dao.Excluir(leilao);
             return NoContent();
         }
 
@@ -68,7 +64,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
             if (leilao.Situacao != SituacaoLeilao.Rascunho) return StatusCode(405);
             leilao.Situacao = SituacaoLeilao.Pregao;
             leilao.Inicio = DateTime.Now;
-            _dao.AlterarLeilao(leilao);
+            _dao.Alterar(leilao);
             return Ok();
         }
 
@@ -80,7 +76,7 @@ namespace Alura.LeilaoOnline.WebApp.Controllers
             if (leilao.Situacao != SituacaoLeilao.Pregao) return StatusCode(405);
             leilao.Situacao = SituacaoLeilao.Finalizado;
             leilao.Termino = DateTime.Now;
-            _dao.AlterarLeilao(leilao);
+            _dao.Alterar(leilao);
             return Ok();
         }
 

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alura.LeilaoOnline.WebApp.Interfaces;
 using Alura.LeilaoOnline.WebApp.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alura.LeilaoOnline.WebApp.Dados
+namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
 {
-    public class LeilaoDao
+    public class LeilaoDaoComEfCore : ILeilaoDao
     {
         AppDbContext _context;
 
-        public LeilaoDao()
+        public LeilaoDaoComEfCore()
         {
             _context = new AppDbContext();
         }
@@ -25,19 +26,19 @@ namespace Alura.LeilaoOnline.WebApp.Dados
 
         public IEnumerable<Categoria> BuscarTodasCategorias() => _context.Categorias;
 
-        public void IncluirLeilao(Leilao obj)
+        public void Incluir(Leilao obj)
         {
             _context.Leiloes.Add(obj);
             _context.SaveChanges();
         }
 
-        public void AlterarLeilao(Leilao obj)
+        public void Alterar(Leilao obj)
         {
             _context.Leiloes.Update(obj);
             _context.SaveChanges();
         }
 
-        public void ExcluirLeilao(Leilao leilao)
+        public void Excluir(Leilao leilao)
         {
             _context.Leiloes.Remove(leilao);
             _context.SaveChanges();
