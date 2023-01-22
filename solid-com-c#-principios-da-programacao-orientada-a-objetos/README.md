@@ -232,6 +232,40 @@ Acoplamento diz respeito à dependência entre dois tipos. Num sistema orientado
 - essas idéias foram sintetizadas no Princípio da Responsabilidade Única (SRP) cunhado por Robert Martin
 
 
+### Ajude Daenerys em seu projeto
+Daenerys está encarregada de manter um projeto AspNet e ela recebeu uma solicitação para mudar uma funcionalidade. Veja abaixo o código do serviço com o caso de uso de publicação de um artigo para a versão atual do software (chamaram de Dothrak, esse pessoal adora GoT!).
+````cs
+public class DothrakPublicacaoService : IPublicacaoService
+{
+  public void PublicaArtigo(int idArtigo)
+  {
+    var artigo = _dao.ArtigoPorId(idArtigo);
+    artigo.Situacao = SituacaoArtigo.Publicado;
+    _dao.Alterar(artigo);
+  }
+}
+````
+
+A mudança solicitada é registrar a data em que o artigo foi publicado. Simples, não?
+
+Ajude Daenerys escolhendo a alternativa que mantém a estabilidade da classe acima.
+
+
+- 
+````cs
+  public class NovaVersaoPublicacaoService : IPublicacaoService
+{
+  public void PublicaArtigo(int idArtigo)
+  {
+    var artigo = _dao.ArtigoPorId(idArtigo);
+    artigo.Situacao = SituacaoArtigo.Publicado;
+    artigo.DataPublicacao = DateTime.Now;
+    _dao.Alterar(artigo);
+  }
+}
+````
+Legal! Quando criamos uma nova implementação mantemos a estabilidade das classes existentes, porque elas ficam inalteradas!
+
 
 Perguntas:
 
