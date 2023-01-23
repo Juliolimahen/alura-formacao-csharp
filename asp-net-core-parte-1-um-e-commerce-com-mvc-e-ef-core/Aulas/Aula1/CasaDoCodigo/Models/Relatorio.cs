@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Models
 {
-    public class Relatorio
+    public class Relatorio : IRelatorio
     {
         private readonly Catalogo _catalogo;
 

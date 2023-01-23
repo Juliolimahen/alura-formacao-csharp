@@ -2,7 +2,7 @@
 
 namespace CasaDoCodigo.Models
 {
-    public class Catalogo
+    public class Catalogo : ICatalogo
     {
         public List<Livro> GetLivros()
         {
@@ -13,6 +13,6 @@ namespace CasaDoCodigo.Models
             livros.Add(new Livro("003", "Como as democracias morrem", 100.44m));
 
             return livros;
-        } 
+        }
     }
 }
