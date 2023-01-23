@@ -81,7 +81,7 @@ Alura Cursos Online
 
 Autor: Yuri Padilha
 
-Fonte: <a>https://www.alura.com.br/curso-online-bootstrap-criacao-single-page-responsiva</a>
+ <a href="https://www.alura.com.br/curso-online-bootstrap-criacao-single-page-responsiva"> Fonte </a>
 
 
 ### Classe startup
@@ -222,3 +222,260 @@ Se você precisar criar novas aplicações, é recomendával utilizar o EF Core,
 O EF 6 depende do Windows. Isso significa que você não poderá criar novas aplicações com EF 6 para o .NET Core. Somente o Entity Framework Core pode rodar sobre o .NET Core.
 
 Você ainda pode utilizar o Entity Framework 6 em novos projetos, porém é importante saber se ele é aceitável para sua aplicação. Você pode visualizar as diferenças entre EF 6 e EF Core nas tabelas abaixo, que podem lhe ajudar a decidir qual das duas opções é mais adequada ao seu projeto.
+
+
+
+### Vamos dar uma olhada no código do PedidoController:
+
+````cs
+ public class PedidoController : Controller
+    {
+        private readonly IProdutoRepository produtoRepository;
+
+        public PedidoController(IProdutoRepository produtoRepository)
+        {
+            this.produtoRepository = produtoRepository;
+        }
+    }
+````
+
+
+Note que esse construtor está exigindo um parâmetro: public PedidoController(IProdutoRepository produtoRepository). Esse parâmetro é uma dependência, isto é, sem ele o controller não vai funcionar, pois precisamos do repositório de produtos para podermos consultar os produtos do e-commerce.
+
+Mas como esse parâmetro é injetado? Note que, em nenhum momento, nós instanciamos um controller diretamente, como por exemplo PedidoController meuController = new PedidoController(), certo? Quando chamamos uma url para acessar action através do navegador, o controller é instanciado pelo próprio ASP.NET Core, por baixo dos panos. O que fazemos na injeção de dependência é informar o ASP.NET Core sobre tudo o que a instância do controller precisa para ser criada. 
+
+E então o que o ASP.NET Core faz automatimente, sem a gente ver?
+
+- Ele cria uma instância de IProdutoRepository (através da classe ProdutoRepository)
+- Ele cria uma instância de PedidoController, passando a instância de IProdutoRepository criada no passo 1.
+
+Ou seja, esse parâmetro é injetado automaticamente sempre que o ASP.NET Core cria uma nova instância do PedidoController.
+
+Qual seria a alternativa a isso?
+
+Sem injeção de dependência, teríamos que criar as instâncias manualmente, usando o operador new. Teríamos que informar a classe concreta, em tempo de desenvolvimento, o tempo todo. Com injeção de dependência, podemos simplesmente definir parâmetros nos construtores, que são interfaces e não classes concretas. Por que isso é importante? Porque quando programamos com interfaces fazemos com que as classes não precisem conhecer as classes concretas que vão ser criadas, apenas as interfaces. Isso é bom porque diminui o acoplamento e a dependência entre classes.
+
+Um exemplo de injeção de dependência: Imagine que você tenha uma aplicação que gera logs sobre a atividade do usuário no seu site. Você então utiliza injeção de dependência, fazendo seu programa chamar métodos da interface IUserLog. Inicialmente, você define que os logs vão ser gravados em arquivo texto, através de uma classe FileLog (que implementa IUserLog). Mas depois de um tempo, você decide gravar os logs em banco de dados, usando uma outra classe chamada SQLServerLog (que também implementa IUserLog).
+
+Como você faria essa mudança? Com injeção de dependência, você pode simplesmente mudar uma única linha de configuração, indicando que IUserLog deve ser instanciada como SQLServerLog, e não mais como FileLog. Agora, sem injeção de dependência você teria que substituir todas as chamadas da classe FileLog para SQLServerLog.
+
+
+### Você está desenvolvendo uma aplicação da área de Recursos Humanos usando ASP.NET Core 2.0 MVC, e acaba de criar uma nova classe chamada Calendario. Essa classe possui métodos que serão úteis para obter dados para várias páginas. Os métodos são:
+
+````cs 
+public int GetDiasCorridos(DateTime dataInicial, DateTime dataFinal){}
+public int GetDiasUteis(DateTime dataInicial, DateTime dataFinal){}
+public DateTime GetProximasFerias(int funcionarioId){}
+````
+
+Você deseja que uma instância da classe Calendario esteja disponível para uso em todos os pontos da sua aplicação, e deseja que o código não referencie a classe diretamente, mas sim através da sua interface ICalendario. Quais os passos necessários para realizar essa tarefa?
+
+
+- Criando um parâmetro ICalendario no construtor de cada classe que utilizará a instância da classe Calendario:
+````cs
+public class MinhaClasse()
+{
+    public MinhaClasse(ICalendario calendario)
+    {
+    }
+}
+
+````
+
+O parâmetro ICalendario será passado pelo container de injeção de dependência do ASP.NET Core 2.0 como uma instância da classe Calendario.
+
+
+- Usando os métodos da instância do campo calendario nos métodos da classe MinhaClasse:
+
+````cs
+public void AlgumMetodo(int funcionarioId, DateTime dataInicial, DateTime dataFinal)
+{
+    DateTime inicioProximasFerias = calendario.GetProximasFerias(funcionarioId)
+    int diasCorridos = calendario.GetDiasCorridos(dataInicial, dataFinal)
+    int diasUteis = calendario.GetDiasUteis(dataInicial, dataFinal)
+}
+````
+
+O campo ICalendario calendario armazena uma referência para o objeto que foi injetado na classe MinhaClasse, portanto os seus métodos já estão disponíveis para uso dentro dos métodos da classe.
+
+
+- Atribuindo o valor do parâmetro ICalendario a um campo privado da classe MinhaClasse:
+
+````cs
+public class MinhaClasse()
+{
+    private readonly ICalendario calendario;
+
+    public MinhaClasse(ICalendario calendario)
+    {
+        this.calendario = calendario;
+    }
+}
+
+````
+
+O campo ICalendario calendario armazenará uma referência para o objeto que foi injetado na classe MinhaClasse;
+
+
+- Registrando a interface e a classe no container de injeção de dependência, no método Startup.ConfigureServices:
+
+````cs
+services.AddTransient<ICalendario, Calendario>();
+````
+
+Usamos services.AddTransient para registrar a interface juntamente com a classe concreta. Dessa forma, o container de injeção de dependência do ASP.NET Core 2.0 saberá criar a instância da classe apropriada a partir da interface.
+
+
+### Por que parâmetro como interface e não como classe concreta?
+
+Quando definimos que os parâmetros de métodos e construtores de uma determinada classe são classes concretas, corremos o risco de "engessar" as relações entre as classes.
+
+É uma boa prática programar para interfaces, pois isso diminui o acoplamento entre as classes, isto é, diminui a dependência entre elas. Por exemplo, imagine esta classe:
+
+````cs 
+public class Automovel()
+{
+    public Automovel(MotorAGasolina motor)
+    {
+    ...
+    }
+}`
+````
+
+O que acontece quando você precisa trocar MotorAGasolina por uma outra classe, chamada MotorAAlcool, que implementa os mesmos métodos e interfaces? Nesse caso, você precisa mudar a classe Automovel:
+
+````cs
+public class Automovel()
+{
+    public Automovel(MotorAAlcool motor)
+    {
+    ...
+    }
+}
+````
+
+Mas isso não é bom, pois você está modificando uma classe que funciona perfeitamente, apenas para trocar o tipo de um parâmetro!
+
+Isso representa uma violação de um princípio conhecido como "open-closed principle", isto é, aberto para extensibilidade, fechado para modificação. De acordo com esse princípio, você deveria projetar sua classe para que as mudanças, como alterações nos tipos de parâmeros, não necessitem de alterações na classe Automovel.
+
+Mas quando você estabelece que a interface utilizada é de uma determinada interface, você já definiu um contrato entre a classe Automovel e o tipo de classe que ela recebe como parâmetro do construtor:
+
+````cs
+public class Automovel()
+{
+    public Automovel(IMotor motor)
+    {
+    }
+}
+````
+
+A partir daí, não importa qual é exatamente a classe recebida como parâmetro do construtor de Automovel, desde que ela implemente a interface IMotor.
+
+
+### Numa view Razor, qual a diferença entre @model (com inicial em minúscula) e @Model (com inicial em maiúscula)?
+
+As duas formas tem uma utilização bem específica:
+
+
+- 1) Para declarar com qual qual modelo a página Razor irá trabalhar, utilizamos a diretiva @model (inicial em minúscula):
+
+````cshtml 
+@model Cadastro
+````
+
+Nesse caso, Cadastro é a classe que serve de modelo para a view.
+
+- 2) Para acessar as propriedades do modelo, precisamos utilizar o objeto Model (inicial em maiúscula):
+
+````cshtml 
+<input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente"
+       asp-for="@Model.Nome">
+````
+
+Mas por que nesse caso também foi usado o símbolo de arroba (@) ? Porque ele sempre demarca o início de código C# dentro do HTML numa view Razor.
+
+Note que nem sempre o objeto Model é precedido pelo arroba (@): Ele só é necessário quando você está inserindo o Model diretament num código HTML. Se você utilizar o Model dentro de um bloco C#, não se usa o arroba (@):
+
+````cshtml 
+<div class="carousel-inner" role="listbox">
+    @{
+        const int TAMANHO_PAGINA = 4;
+        int paginas = (int)Math.Ceiling((double)Model.Count() / TAMANHO_PAGINA);
+    }
+````
+
+## Renderizando a view com o modelo
+
+### Como uma view obtém os dados do modelo para exibir na interface do usuário?
+
+- Uma view automaticamente recebe o modelo a partir de uma action do controller. Em seguida, esse modelo é usado pelo mecanismo de renderização Razor para montar a interface.
+
+- O controller serve para coordenar as requisições da rota da aplicação, obter os dados do modelo e passá-los para a view renderizá-los.
+
+
+### Para saber mais - Code First, Database First ou Model First?
+
+Quando trabalhamos com frameworks de "Mapeamento Objeto-Relacional", como Entity Framework, temos 3 alternativas: Code First, Database First ou Model First. Como escolher a melhor? Neste post, Gabriel Ferreira desmistifica e discute cada um deles, para você não ter dúvidas quando iniciar seu próximo projeto com Entity Framework Core.
+
+### Qual técnica utilizar com o Entity Framework: Code First, Database First ou Model First?
+
+Gabriel Ferreira
+
+<a href="http://gabsferreira.com/qual-tecnica-utilizar-com-o-entity-framework-code-first-database-first-ou-model-first/"> Fonte</a>
+
+
+### Âncora HTML x AnchorTagHelper
+
+
+Como o ASP.NET Core consegue diferenciar uma Âncora HTML de um AnchorTagHelper, se ambos têm o formato 
+````html
+<a ...></a>?
+````
+
+- Uma AnchorTagHelper sempre tem pelo menos um atributo asp-...
+
+- Os atributos asp-... fazer o ASP.NET Core tratar a âncora como AnchorTagHelper, que será executada no servidor e em seguida irá gerar o código HTML final.
+
+
+## Modificando a rota default
+
+Você está desenvolvendo uma aplicação web para consultório de odontologia.
+
+Você precisa criar uma visualização do histórico de visitas de um paciente.
+
+Você então cria um controller chamado PacienteController, onde o método com assinatura IActionResult Historico(int pacienteId) funciona como Action para a view Historico.cshtml.
+
+Você quer que a view de histórico de visitas do cliente seja acessada através de uma url específica, como no exemplo abaixo:
+
+````cshtml
+
+[endereço do website]://paciente/historico/123
+````
+
+````cshtml
+    name: "default", template: "{controller=Paciente}/{action=NovaVisita}/{pacienteId?}");
+````
+
+- Assim a view default se torna NovaVisita, do controller PacienteController, e a action receberá corretamente o parâmetro pacienteId.
+
+## Para quê sessão?
+
+Por qual motivo você usaria a sessão (Session) numa aplicação ASP.NET Core MVC? Escolha a melhor resposta.
+
+- Para a aplicação não perder uma informação importante do usuário enquanto o usuário navega pelas páginas da aplicação
+
+- O estado de sessão é um recurso do ASP.NET Core que você pode usar para salvar e armazenar dados de usuário enquanto o usuário navega seu aplicativo Web. Composto por um dicionário ou tabela de hash no servidor, o estado de sessão persiste dados entre solicitações de um navegador. É feito um back up dos dados da sessão em um cache.
+
+
+## Para saber mais - Entity Framework Core
+
+O Entity Framework Core é tão importante que a Alura Cursos Online criou um curso só para ele! Acompanhe com Daniel Portugal este novo curso para você ter mais poder sobre o banco de dados a partir da sua aplicação .NET.
+
+
+## Entity Framework Core: Banco de dados de forma eficiente
+
+Alura Cursos Online
+
+Daniel Portugal
+
+<a href="https://www.alura.com.br/curso-online-entity-framework-core">Fonte</a>
