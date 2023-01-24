@@ -1,3 +1,5 @@
+ASP.NET Core parte 1: um e-Commerce com MVC e EF Core 2
+
 ## PARA SABER MAIS...
 
 
@@ -479,3 +481,103 @@ Alura Cursos Online
 Daniel Portugal
 
 <a href="https://www.alura.com.br/curso-online-entity-framework-core">Fonte</a>
+
+
+## Obtendo produtos do banco de dados
+
+Como você implementaria o método GetProdutos() para obter todos os produtos da entidade Produto do banco de dados?
+
+
+````cs
+public List<Produto> GetProdutos()
+{
+    return contexto.Set<Produto>().ToList();
+} 
+````
+
+````cs 
+contexto.Set<Produto>()
+```` 
+representa no contexto do Entity Framework Core a coleção de produtos do banco de dados, portanto, quando obtemos seu valor, estamos na verdade consultando todos os produtos do banco de dados.
+
+## Gravando id do pedido na sessão
+
+Você está desenvolvendo uma aplicação de comércio eletrônico, utilizando ASP.NET Core 2.0 e Entity Framework Core.
+
+Num certo momento, você implementa o método GetPedido(), que obtém o Pedido atual do usuário ou cria um novo se ele não existir:
+
+````cs
+001    public Pedido GetPedido()
+002    {
+003        var pedidoId = GetPedidoId();
+004        var pedido = dbSet
+005            .Include(p => p.Itens)
+006                .ThenInclude(i => i.Produto)
+007            .Where(p => p.Id == pedidoId)
+008            .SingleOrDefault();
+009    
+010        if (pedido == null)
+011        {
+012            pedido = new Pedido();
+013            dbSet.Add(pedido);
+014            contexto.SaveChanges();
+015        }
+016    
+017        return pedido;
+018    }
+````
+
+Porém, você se esqueceu de fazer a chamada ao método SetPedidoId(int pedidoId), que grava o Id do pedido na sessão do ASP.NET Core para que ele seja preservado durante a navegação do usuário.
+
+Em que lugar do código você implementaria a chamada ao método SetPedidoId?
+
+- Entre as linhas 14 e 15
+
+### Consultando entidades associadas
+
+Você está desenvolvendo uma aplicação web para consultório de odontologia. Sua aplicação usa ASP.NET Core e Entity Framework Core para mapear as entidades do modelo (escrito em C#), para o banco de dados relacional Sql Server.
+
+As entidades do banco de dados são:
+
+Paciente: O cliente que se submete ao procedimento
+Procedimento: O trabalho realizado (limpeza, extração, implante, etc.)
+Dentista: O(a) profissional de odontologia
+Suas entidades em C# possuem os seguintes relacionamentos:
+
+Cada Paciente se submete a 0 ou mais procedimentos
+Cada Procedimento é realizado em 1 e somente 1 Paciente
+Cada Procedimento é realizado por 1 e somente 1 Dentista
+Cada Dentista realiza 0 ou mais procedimentos
+Para uma das consultas ao banco de dados, realizadas usando Entity Framework Core, você implementa o seguinte código para obter os dados do paciente e também os dentistas que o atenderam:
+
+````cs
+    var paciente = contexto.Set<Paciente>()
+        .Where(pac => pac.Id == pacienteId)
+        .SingleOrDefault();
+````
+
+Porém, ao obter o resultado da consulta, você percebe que o paciente contém todos os dados do paciente, porém não a consulta não trouxe nenhum Procedimento e, por causa disso, também nenhum Dentista.
+
+````cs
+    var paciente = contexto.Set<Paciente>()
+        .Include(pac => pac.Procedimento)
+            .ThenInclude(proc => proc.Dentista)
+        .Where(pac => pac.Id == pacienteId)
+        .SingleOrDefault();
+````
+
+- Você pode usar o método Include para especificar dados relacionados a serem incluídos nos resultados da consulta. Além disso, você pode fazer uma busca detalhada por meio de relações para incluir vários níveis de dados relacionados usando o método ThenInclude.
+
+ASP.NET Core parte 2: um e-Commerce com MVC e EF Core 2
+
+## Obtendo elementos na hierarquia do HTML
+
+Você está desenvolvendo uma aplicação de comércio eletrônico, usando a biblioteca JavaScript JQuery.
+
+A página de carrinho da aplicação possui um trecho contendo informações importantes sobre os itens do pedido, e você precisa obter informações nos elementos desse documento HTML.
+
+Quais métodos jQuery você usaria para obter os elementos acima e abaixo de um determinado elemento, respectivamente? Escolha a melhor alternativa.
+
+- parents e find
+
+- O método parents obtém os "ancestrais" (elementos acima da hierarquia) do elemento. O método find vai obter os elementos abaixo da hiearquia.

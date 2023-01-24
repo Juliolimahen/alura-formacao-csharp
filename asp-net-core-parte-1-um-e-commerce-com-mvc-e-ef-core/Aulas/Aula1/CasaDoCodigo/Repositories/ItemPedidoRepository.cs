@@ -7,5 +7,10 @@ namespace CasaDoCodigo.Repositories
         public ItemPedidoRepository(AppDbContext context) : base(context)
         {
         }
+
+        public void UpdateQuantidade(ItemPedido itemPedido)
+        {
+            
+        }
     }
 }

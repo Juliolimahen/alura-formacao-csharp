@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CasaDoCodigo.Repositories
 {
-    public class BaseRepository<T> where T : BaseModel
+    public abstract class BaseRepository<T> where T : BaseModel
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> dbSet;
@@ -11,7 +11,7 @@ namespace CasaDoCodigo.Repositories
         public BaseRepository(AppDbContext context)
         {
             _context = context;
-            dbSet = _context.Set<T>();
+            dbSet = context.Set<T>();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace CasaDoCodigo.Repositories
 {
     public interface IProdutoRepository
     {
-        IEnumerable<Produto> GetProdutos();
+        IList<Produto> GetProdutos();
         void SaveProdutos(List<Livro> livros);
     }
 }
