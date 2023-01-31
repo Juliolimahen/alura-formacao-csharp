@@ -6,5 +6,11 @@ namespace CasaDoCodigo.Models
     {
         public ItemPedido ItemPedido { get; }
         public CarrinhoViewModel CarrinhoViewModel { get; }
+
+        public UpdateQuantidadeResponse(ItemPedido itemPedido, CarrinhoViewModel carrinhoViewModel)
+        {
+            ItemPedido = itemPedido;
+            CarrinhoViewModel = carrinhoViewModel;
+        }
     }
 }
