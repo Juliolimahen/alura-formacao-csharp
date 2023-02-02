@@ -581,3 +581,149 @@ Quais métodos jQuery você usaria para obter os elementos acima e abaixo de um 
 - parents e find
 
 - O método parents obtém os "ancestrais" (elementos acima da hierarquia) do elemento. O método find vai obter os elementos abaixo da hiearquia.
+
+
+## Defina o Binding dos Campos do Formulário
+
+Você está desenvolvendo uma aplicação MVC com ASP.NET Core.
+
+Uma das views possui um formulário de cadastro de dados de cliente, e seu modelo é definido como o tipo Cadastro:
+
+````cshtml
+@model Cadastro
+````
+
+Essa classe possui Cadastro possui propriedades como Nome, Email e Telefone.
+
+Para o campo Nome, você cria um ````<label>```` e um ````<input>````, conforme segue:
+
+````cshtml 
+<label class="control-label" for="nomeCliente">Nome do Cliente</label>
+<input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente">
+````
+
+Porém, você precisa fazer um binding dessa campo com o modelo da view.
+
+Qual atributo você adiciona à tag <input> para fazer o binding com a propriedade Cadastro.Nome e transformá-la em uma TagHelper?
+
+````cshtml 
+asp-for="@Model.Nome"
+````
+
+Isso mesmo! O atributo asp-for transforma a tag ````<input>```` em uma TagHelper e também faz o binding do elemento com a propriedade Nome do Model.
+
+
+## Valide o Campo do Formulário
+
+Você está montando um cadastro de clientes em uma aplicação MVC usando ASP.NET Core.
+
+Na view contendo o cadastro, você cria o label e também o input para o campo Nome:
+
+````cshtml
+<label class="control-label" for="nomeCliente">Nome do Cliente</label>
+<input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente"
+       asp-for="@Model.Nome">
+````
+
+- ````cshtml
+  <span asp-validation-for="@Model.Nome" class="text-danger"></span>
+  ````
+
+Isso mesmo! O atributo asp-validation-for transforma o elemento numa ValidationMessageTagHelper e ainda injeta no HTML os atributos necessários para a validação do campo pelo plugin jquery-validation que é instalado na criação do projeto MVC Web App do ASP.NET Core.
+
+## Retornando uma View Diferente
+
+Você precisa fazer uma action de uma aplicação MVC com ASP.NET Core para receber uma requisição partindo de um formulário de cadastro de cliente.
+
+Caso os dados do modelo sejam válidos, a action deve gravar os dados em banco de dados. Caso contrário, uma view diferente a requisição deve ser retornada a partir da action.
+
+Qual alternativa contém o código necessário para realizar essa tarefa? Escolha a melhor resposta.
+
+
+````cs
+[HttpPost]
+public IActionResult Resumo(Cadastro cadastro)
+{
+    if (ModelState.IsValid)
+    {
+        var model = pedidoRepository.UpdateCadastro(cadastro);
+        return View(model);
+    }
+    return RedirectToAction("Cadastro");
+}
+````
+
+- Caso o modelo seja válido, os dados serão gravados. Caso contrário, a chamada é redirecionada para a action "Cadastro".
+
+
+## Proteja a Action do Controller
+
+Você está desenvolvendo uma aplicação de comércio eletrônico (MVC Web App) com ASP.NET Core.
+
+Em determinado momento, você necessita proteger uma action do controller contra ataques CSRF (Cross-site Request Forgery, ou Falsificação de solicitação entre sites).
+
+Qual estratégia você tomaria para proteger a action abaixo? Escolha a melhor alternativa.
+
+
+````cs
+public IActionResult Resumo(Cadastro cadastro)
+{
+    if (ModelState.IsValid)
+    {
+        return View(pedidoRepository.UpdateCadastro(cadastro));
+    }
+    return RedirectToAction("Cadastro");
+}
+````
+
+- Um atributo de token anti-falsificação
+
+- O ValidateAntiForgeryToken especifica que a class ou método onde este atributo é aplicado faz uma validação do token anti-falsificação. Se esse token não estiver disponível, ou se o token for inválido, a validação irá falhar e o método da action não será executado.
+
+## Forneça um Token Anti-Falsificação para a Página
+
+Você precisa fazer uma requisição AJAX no JavaScript para um método no servidor que exige um token anti-falsificação.
+
+Porém, a view de onde o JavaScript é executado não contém o token anti-falsificação.
+
+Que estratégia você escolheria para fornecer um token anti-falsificação à página.
+
+- Adicionar uma tag ````<form>```` na view da página.
+
+- A tag ````<form>```` cria um FormTagHelper, que automaticamente fornece à página um token anti-falsificação na forma de um campo ````<input>```` oculto (hidden).
+
+
+### Passe o Token Anti-Falsificação na Chamada Ajax
+
+Você precisa enviar um token anti-falsificação através de uma requsição AJAX no código JavaScript. Observe o trecho de código abaixo, e escolha a modificação mais adequada para realizar essa tarefa.
+
+````js
+
+var data = {
+    Id: 123,
+    Quantidade: 7
+};
+
+$.ajax({
+    url: '/pedido/updatequantidade',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(data)
+})
+````
+
+````js
+let token = $('[name=__RequestVerificationToken]').val();
+let headers = {};
+headers['RequestVerificationToken'] = token;
+
+$.ajax({
+    url: '/pedido/updatequantidade',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(data),
+    headers: headers
+})
+````
+
+- O token deve ser fornecido como um valor do cabeçalho (headers).

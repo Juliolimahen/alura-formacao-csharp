@@ -1,5 +1,7 @@
 ﻿using CasaDoCodigo.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Repositories
 {
@@ -8,20 +10,17 @@ namespace CasaDoCodigo.Repositories
         public ItemPedidoRepository(AppDbContext context) : base(context)
         {
         }
-
-        public void UpdateQuantidade(ItemPedido itemPedido)
+        public async Task<ItemPedido> GetItemPedido(int itemPedidoId)
         {
-            var itemPedidoDb =
-            dbSet
-                .Where(ip => ip.Id == itemPedido.Id)
-                .SingleOrDefault();
+            return
+                await dbSet
+                .Where(ip => ip.Id == itemPedidoId)
+                .SingleOrDefaultAsync();
+        }
 
-            if (itemPedidoDb != null)
-            {
-                itemPedidoDb.AtualizaQuantidade(itemPedido.Quantidade);
-
-                _context.SaveChanges();
-            }
+        public async Task RemoveItemPedido(int itemPedidoId)
+        {
+            dbSet.Remove(await GetItemPedido(itemPedidoId));
         }
     }
 }

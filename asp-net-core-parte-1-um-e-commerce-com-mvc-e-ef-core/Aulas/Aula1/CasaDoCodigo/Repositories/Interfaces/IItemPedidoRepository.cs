@@ -1,9 +1,11 @@
 ﻿using CasaDoCodigo.Models;
+using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Repositories
 {
     public interface IItemPedidoRepository
     {
-        void UpdateQuantidade(ItemPedido itemPedido);
+        Task<ItemPedido> GetItemPedido(int itemPedidoId);
+        Task RemoveItemPedido(int itemPedidoId);
     }
 }

@@ -4,6 +4,7 @@ using CasaDoCodigo.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Controllers
 {
@@ -20,38 +21,52 @@ namespace CasaDoCodigo.Controllers
             _itemPedidoRepository = itempedidoRepository;
         }
 
-        public IActionResult Carrossel()
+        public async Task<IActionResult> Carrossel()
         {
-            return View(_produtoRepository.GetProdutos());
+            return View(await _produtoRepository.GetProdutos());
         }
 
-        public IActionResult Carrinho(string codigo)
+        public async Task<IActionResult> Carrinho(string codigo)
         {
             if (!string.IsNullOrEmpty(codigo))
             {
-                _pedidoRepository.AddItem(codigo);
+                await _pedidoRepository.AddItem(codigo);
             }
 
-            List<ItemPedido> itens = _pedidoRepository.GetPedido().Itens;
+            Pedido pedido = await _pedidoRepository.GetPedido();
+            List<ItemPedido> itens = pedido.Itens;
             CarrinhoViewModel carrinhoViewModel = new CarrinhoViewModel(itens);
-            return View(carrinhoViewModel);
+            return base.View(carrinhoViewModel);
         }
 
-        public IActionResult Cadastro()
+        public async Task<IActionResult> Cadastro()
         {
-            return View();
-        }
+            var pedido = await _pedidoRepository.GetPedido();
 
-        public IActionResult Resumo()
-        {
-            Pedido pedido = _pedidoRepository.GetPedido();
-            return View(pedido);
+            if (pedido == null)
+            {
+                return RedirectToAction("Carrossel");
+            }
+
+            return View(pedido.Cadastro);
         }
 
         [HttpPost]
-        public void UpdateQuantidade([FromBody] ItemPedido itemPedido)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Resumo(Cadastro cadastro)
         {
-            _itemPedidoRepository.UpdateQuantidade(itemPedido);
+            if (ModelState.IsValid)
+            {
+                return View(await _pedidoRepository.UpdateCadastro(cadastro));
+            }
+            return RedirectToAction("Cadastro");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<UpdateQuantidadeResponse> UpdateQuantidade([FromBody] ItemPedido itemPedido)
+        {
+            return await _pedidoRepository.UpdateQuantidade(itemPedido);
         }
     }
 }

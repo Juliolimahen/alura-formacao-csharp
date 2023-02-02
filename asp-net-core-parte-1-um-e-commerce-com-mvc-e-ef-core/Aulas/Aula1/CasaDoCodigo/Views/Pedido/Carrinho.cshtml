@@ -5,6 +5,9 @@
 
 <h3>Meu Carrinho</h3>
 
+<form method="post" asp-action="carrinho">
+</form>
+
 <div class="panel panel-default">
     <div class="panel-heading">
 
@@ -38,14 +41,17 @@
                 <div class="col-md-2 text-center">
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" onclick="carrinho.clickDecremento(this)">
+                            <button class="btn btn-default"
+                                onclick="carrinho.clickDecremento(this)">
                                 <span class="glyphicon-minus"></span>
                             </button>
                         </span>
                         <input type="text" value="@(item.Quantidade)"
-                           class="form-control text-center" onblur="carrinho.updateQuantidade(this)" />
+                           class="form-control text-center"
+                           onblur="carrinho.updateQuantidade(this)" />
                         <span class="input-group-btn">
-                            <button class="btn btn-default" onclick="carrinho.clickIncremento(this)">
+                            <button class="btn btn-default"
+                                onclick="carrinho.clickIncremento(this)">
                                 <span class="glyphicon-plus"></span>
                             </button>
                         </span>
@@ -83,8 +89,8 @@
             <a class="btn btn-success" asp-action="carrossel">
                 Adicionar Produtos
             </a>
-            <a class="btn btn-success" asp-action="resumo">
-                Finalizar Pedido
+            <a class="btn btn-success" asp-action="cadastro">
+                Preencher Cadastro
             </a>
         </div>
     </div>
