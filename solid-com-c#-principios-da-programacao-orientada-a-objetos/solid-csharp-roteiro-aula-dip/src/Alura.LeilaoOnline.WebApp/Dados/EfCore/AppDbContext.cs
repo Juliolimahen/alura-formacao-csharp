@@ -10,7 +10,7 @@ namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AluraLeiloesDB;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("Data Source=DEVPC\\SQLSERVER;Initial Catalog=LeilaoDb; Trusted_Connection=True; TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.LeilaoOnline.WebApp.Interfaces;
+﻿using System.Collections.Generic;
 using Alura.LeilaoOnline.WebApp.Models;
 using Microsoft.EntityFrameworkCore;
 

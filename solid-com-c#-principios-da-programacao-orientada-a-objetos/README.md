@@ -279,3 +279,62 @@ Qual o propósito do padrão DAO?
 - 
 Qual o princípio S.O.L.I.D. relacionado à coesão? 
 - 
+
+
+## Daniel, o enumerado ficou instável!
+
+
+Muito bem! Você pegou o espírito da coisa. Usar enumerados para representar estágios de um conceito (em nosso exemplo estágios de um leilão: leilão em rascunho, em pregão, finalizado e arquivado) é considerado por muitos autores* como outro fedor no código. E de fato o problema é esse: os enumerados ficam muito vulneráveis a mudanças, para lidar com seus valores acabamos usando ifs ou switches e todo o código que depender deles será impactado.
+
+aqui listo só dois:
+<a href="https://learn.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/enumeration-classes-over-enum-types">a própria Microsoft em seu ebook de práticas arquiteturais</a>
+<a href="https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes/">proposta de solução do Jimmy Bogard</a>
+
+
+## Camada de serviços
+
+Nessa aula você conheceu a idéia de Service Layer, uma camada arquitetural que separa as regras de negócio das camadas mais externas (interfaces de usuário, integração com outros sistemas, etc.). Agora você precisa colocar esse conhecimento à prova praticando em seu projeto aí na sua casa.
+
+Use esse passo a passo pra servir de referência:
+
+Services: crie duas abstrações IProdutoService e IAdminService que vão agregar os casos de uso dos perfis público e administrativo; nelas crie métodos para representar cada caso de uso da aplicação
+Services.Handlers: crie duas implementações padrão desses serviços com o código que antes estava nos controladores
+injete os serviços nos controladores via construtor, substituindo os DAOs
+configure o AspNet Core para injetar as implementações padrão dos dois serviços
+
+
+## Sempre fechado?
+
+Nem sempre conseguimos manter nosso código fechado para mudanças. Selecione abaixo justificativas de negócio plausíveis para alterarmos código existente.
+
+
+- Ordem do chefe.
+- Mudanças na interface do usuário, esse é um caso onde podemos (e devemos) aplicar o OCP mas talvez o custo fique alto demais.
+- Correção de defeito, nesse caso o código já não era estável antes, só que sob uma percepção macro: o defeito acaba gerando instabilidade no negócio.
+
+
+## Para saber mais: O que eles têm em comum?
+
+Veja a lista de softwares abaixo e reflita sobre o que eles possuem em comum:
+
+- Wordpress
+- VS Code
+- Eclipse
+- Trello
+- Notepad ++
+- Minecraft
+
+
+O que esses softwares têm em comum é a possibilidade de serem estendidos através de plugins ou add-ons. Ou seja, seu código está fechado para mudanças (portanto mantendo-se estável) e aberto para evolução através dos plugins. Acaba que o OCP não é tão contraditório assim, né?
+
+
+## Camada de Serviços
+Martin Fowler escreveu sobre esse padrão arquitetural em seu livro Patterns of Enterprise Architecture. <a href="https://martinfowler.com/eaaCatalog/serviceLayer.html">Aqui</a> uma breve descrição sobre o pattern por Randy Stafford.
+
+<a href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs">Esse artigo na documentação da Microsoft</a> é orientado para versões antigas do AspNet mas a idéia continua válida: devemos separar a lógica de validação do código dos controladores e a sugestão é uma camada de serviços.
+
+## OCP
+Esse é o artigo do Robert Martin onde ele fala sobre o princípio do aberto/fechado.
+
+## Decorator
+<a href="https://en.wikipedia.org/wiki/Decorator_pattern">Página da Wikipedia sobre o padrão de projeto Decorator</a>, criado pela Gangue dos Quatro (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides). Apesar de citarem o SRP na página eu pessoalmente acho que o Decorator é mais aderente ao OCP.
