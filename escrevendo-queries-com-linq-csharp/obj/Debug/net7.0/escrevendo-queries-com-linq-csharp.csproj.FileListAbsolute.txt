@@ -1,0 +1,15 @@
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\bin\Debug\net7.0\escrevendo-queries-com-linq-csharp.exe
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\bin\Debug\net7.0\escrevendo-queries-com-linq-csharp.deps.json
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\bin\Debug\net7.0\escrevendo-queries-com-linq-csharp.runtimeconfig.json
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\bin\Debug\net7.0\escrevendo-queries-com-linq-csharp.dll
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\bin\Debug\net7.0\escrevendo-queries-com-linq-csharp.pdb
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.csproj.AssemblyReference.cache
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.AssemblyInfoInputs.cache
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.AssemblyInfo.cs
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.csproj.CoreCompileInputs.cache
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.dll
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\refint\escrevendo-queries-com-linq-csharp.dll
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.pdb
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\escrevendo-queries-com-linq-csharp.genruntimeconfig.cache
+C:\Users\DevPC\OneDrive\arq\Documentos\escrevendo-queries-com-linq-csharp\obj\Debug\net7.0\ref\escrevendo-queries-com-linq-csharp.dll
