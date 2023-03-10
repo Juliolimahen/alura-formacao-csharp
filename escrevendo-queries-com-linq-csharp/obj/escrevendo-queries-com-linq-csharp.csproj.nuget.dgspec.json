@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DevPC\\OneDrive\\arq\\Documentos\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj": {}
+    "C:\\ws-projetos\\alura-formacao-csharp\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DevPC\\OneDrive\\arq\\Documentos\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj": {
+    "C:\\ws-projetos\\alura-formacao-csharp\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DevPC\\OneDrive\\arq\\Documentos\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj",
+        "projectUniqueName": "C:\\ws-projetos\\alura-formacao-csharp\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj",
         "projectName": "escrevendo-queries-com-linq-csharp",
-        "projectPath": "C:\\Users\\DevPC\\OneDrive\\arq\\Documentos\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj",
+        "projectPath": "C:\\ws-projetos\\alura-formacao-csharp\\escrevendo-queries-com-linq-csharp\\escrevendo-queries-com-linq-csharp.csproj",
         "packagesPath": "C:\\Users\\DevPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DevPC\\OneDrive\\arq\\Documentos\\escrevendo-queries-com-linq-csharp\\obj\\",
+        "outputPath": "C:\\ws-projetos\\alura-formacao-csharp\\escrevendo-queries-com-linq-csharp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

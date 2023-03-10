@@ -7,5 +7,6 @@ namespace Student_Model
         public string Last { get; set; }
         public int ID { get; set; }
         public List<int> Scores;
+        public DateTime DateRegister { get; set; }
     }
 }
