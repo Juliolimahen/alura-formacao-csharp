@@ -7,13 +7,14 @@ namespace RestauranteService.ItemServiceHttpClient
     public class ItemServiceHttpClient : IItemServiceHttpClient
     {
         private readonly HttpClient _client;
+        private readonly IConfiguration _configuration;
 
         public ItemServiceHttpClient(HttpClient client)
         {
             _client = client;
         }
 
-        public void EnviaRestauranteParaItemService(RestauranteReadDto
+        public async void EnviaRestauranteParaItemService(RestauranteReadDto
             restauranteReadDto)
         {
             var conteudoHttp = new StringContent(
@@ -21,6 +22,7 @@ namespace RestauranteService.ItemServiceHttpClient
                 Encoding.UTF8,
                 "application/json"
                 );
+            await _client.PostAsync(_configuration["ItemService"], conteudoHttp);
         }
     }
 }
