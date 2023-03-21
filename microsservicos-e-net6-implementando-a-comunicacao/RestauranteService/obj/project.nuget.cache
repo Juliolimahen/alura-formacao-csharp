@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0wapV3mujdLeFnZNV1q4sPx3kEEvC5cD7kzEvRkN1Gsoo+4t0nrbkosV6QzXbqSlDO11waQOnIwTfmh9eXJxDg==",
+  "dgSpecHash": "O1mcTgWuOkDExW3mnuCZq/iu5dpnnve16h8+a01m4TqAoRyZ3QY9GeB5lq5fHdHY+ZCxF+DI7So825HH12eJYQ==",
   "success": true,
   "projectFilePath": "C:\\ws-projetos\\alura-formacao-csharp\\microsservicos-e-net6-implementando-a-comunicacao\\RestauranteService\\RestauranteService.csproj",
   "expectedPackageFiles": [
@@ -25,8 +25,8 @@
     "C:\\Users\\DevPC\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\DevPC\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\DevPC\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\DevPC\\.nuget\\packages\\mysqlconnector\\2.0.0\\mysqlconnector.2.0.0.nupkg.sha512",
-    "C:\\Users\\DevPC\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.0\\pomelo.entityframeworkcore.mysql.6.0.0.nupkg.sha512",
+    "C:\\Users\\DevPC\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
+    "C:\\Users\\DevPC\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.1\\pomelo.entityframeworkcore.mysql.6.0.1.nupkg.sha512",
     "C:\\Users\\DevPC\\.nuget\\packages\\rabbitmq.client\\6.2.3\\rabbitmq.client.6.2.3.nupkg.sha512",
     "C:\\Users\\DevPC\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\DevPC\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",

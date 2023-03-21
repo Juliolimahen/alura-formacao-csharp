@@ -4,6 +4,6 @@ namespace RestauranteService.ItemServiceHttpClient
 {
     public interface IItemServiceHttpClient
     {
-        void EnviaRestauranteParaItemService(RestauranteReadDto restauranteReadDto);
+        public void EnviaRestauranteParaItemService(RestauranteReadDto readDto);
     }
 }
