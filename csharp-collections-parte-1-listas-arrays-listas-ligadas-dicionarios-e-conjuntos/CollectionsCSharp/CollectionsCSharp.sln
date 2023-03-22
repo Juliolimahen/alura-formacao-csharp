@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpArray", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpList", "CollectionsCSharpList\CollectionsCSharpList.csproj", "{828F358D-26EB-4024-AC69-F6C5A7205F76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpObjectList", "CollectionsCSharpObjectList\CollectionsCSharpObjectList.csproj", "{BE93740C-83A5-4A2D-A0A7-E6219BC66850}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{828F358D-26EB-4024-AC69-F6C5A7205F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828F358D-26EB-4024-AC69-F6C5A7205F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{828F358D-26EB-4024-AC69-F6C5A7205F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE93740C-83A5-4A2D-A0A7-E6219BC66850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE93740C-83A5-4A2D-A0A7-E6219BC66850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE93740C-83A5-4A2D-A0A7-E6219BC66850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE93740C-83A5-4A2D-A0A7-E6219BC66850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
