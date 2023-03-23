@@ -6,14 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "CollectionsCSharpSets/1.0.0": {
-        "dependencies": {
-          "CollectionsCSharpObjectList": "1.0.0"
-        },
-        "runtime": {
-          "CollectionsCSharpSets.dll": {}
-        }
-      },
       "CollectionsCSharpObjectList/1.0.0": {
         "runtime": {
           "CollectionsCSharpObjectList.dll": {}
@@ -22,11 +14,6 @@
     }
   },
   "libraries": {
-    "CollectionsCSharpSets/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "CollectionsCSharpObjectList/1.0.0": {
       "type": "project",
       "serviceable": false,

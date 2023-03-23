@@ -13,3 +13,9 @@ C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-li
 C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\obj\Debug\net6.0\CollectionsCSharpSets.pdb
 C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\obj\Debug\net6.0\CollectionsCSharpSets.genruntimeconfig.cache
 C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\obj\Debug\net6.0\ref\CollectionsCSharpSets.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\bin\Debug\net6.0\CollectionsCSharpObjectList.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\bin\Debug\net6.0\CollectionsCSharpObjectList.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\bin\Debug\net6.0\CollectionsCSharpObjectList.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\bin\Debug\net6.0\CollectionsCSharpObjectList.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\bin\Debug\net6.0\CollectionsCSharpObjectList.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\CollectionsCSharp\CollectionsCSharpSets\obj\Debug\net6.0\CollectionsCSharpSets.csproj.CopyComplete

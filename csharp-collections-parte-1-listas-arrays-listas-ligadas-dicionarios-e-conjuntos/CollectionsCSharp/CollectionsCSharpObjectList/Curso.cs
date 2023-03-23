@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace CollectionsCSharpObjectList;
 
-class Curso
+public class Curso
 {
     private List<Aula> aulas;
     private string nome;

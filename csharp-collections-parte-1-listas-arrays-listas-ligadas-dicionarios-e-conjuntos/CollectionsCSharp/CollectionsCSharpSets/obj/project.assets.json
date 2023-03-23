@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "CollectionsCSharpObjectList/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/CollectionsCSharpObjectList.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CollectionsCSharpObjectList.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CollectionsCSharpObjectList/1.0.0": {
+      "type": "project",
+      "path": "../CollectionsCSharpObjectList/CollectionsCSharpObjectList.csproj",
+      "msbuildProject": "../CollectionsCSharpObjectList/CollectionsCSharpObjectList.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "CollectionsCSharpObjectList >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\DevPC\\.nuget\\packages\\": {},
@@ -37,7 +56,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\ws-projetos\\alura-formacao-csharp\\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\\CollectionsCSharp\\CollectionsCSharpObjectList\\CollectionsCSharpObjectList.csproj": {
+              "projectPath": "C:\\ws-projetos\\alura-formacao-csharp\\csharp-collections-parte-1-listas-arrays-listas-ligadas-dicionarios-e-conjuntos\\CollectionsCSharp\\CollectionsCSharpObjectList\\CollectionsCSharpObjectList.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
