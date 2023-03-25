@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\bin\Debug\net6.0\CollectionsCSharpJoggedArrays.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\bin\Debug\net6.0\CollectionsCSharpJoggedArrays.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\bin\Debug\net6.0\CollectionsCSharpJoggedArrays.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\bin\Debug\net6.0\CollectionsCSharpJoggedArrays.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\bin\Debug\net6.0\CollectionsCSharpJoggedArrays.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\refint\CollectionsCSharpJoggedArrays.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\CollectionsCSharpJoggedArrays.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpJoggedArrays\obj\Debug\net6.0\ref\CollectionsCSharpJoggedArrays.dll

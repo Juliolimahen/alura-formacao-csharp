@@ -1,0 +1,15 @@
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\bin\Debug\net6.0\CollectionsCSharpSortedSet.exe
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\bin\Debug\net6.0\CollectionsCSharpSortedSet.deps.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\bin\Debug\net6.0\CollectionsCSharpSortedSet.runtimeconfig.json
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\bin\Debug\net6.0\CollectionsCSharpSortedSet.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\bin\Debug\net6.0\CollectionsCSharpSortedSet.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.csproj.AssemblyReference.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.GeneratedMSBuildEditorConfig.editorconfig
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.AssemblyInfoInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.AssemblyInfo.cs
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.csproj.CoreCompileInputs.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\refint\CollectionsCSharpSortedSet.dll
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.pdb
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\CollectionsCSharpSortedSet.genruntimeconfig.cache
+C:\ws-projetos\alura-formacao-csharp\csharp-collections-parte-2-colecoes-e-linq\CollectionsCSharpSortedList\CollectionsCSharpSortedSet\obj\Debug\net6.0\ref\CollectionsCSharpSortedSet.dll
