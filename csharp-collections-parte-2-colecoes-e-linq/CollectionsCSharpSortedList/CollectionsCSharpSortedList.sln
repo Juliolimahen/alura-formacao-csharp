@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionsCSharpArrayMulti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionsCSharpJoggedArrays", "CollectionsCSharpJoggedArrays\CollectionsCSharpJoggedArrays.csproj", "{17808812-ACA6-4B44-BFF6-8C32EA578E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpConsultas", "CollectionsCSharpConsultas\CollectionsCSharpConsultas.csproj", "{19BECD24-2AFB-49C7-ADDB-02C6E707514B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionsCSharpConsultas", "CollectionsCSharpConsultas\CollectionsCSharpConsultas.csproj", "{19BECD24-2AFB-49C7-ADDB-02C6E707514B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpConsultaSequenciaDeElementos", "CollectionsCSharpConsultaSequenciaDeElementos\CollectionsCSharpConsultaSequenciaDeElementos.csproj", "{C38C4CFA-49A1-4597-AA80-128EF7801720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpOperadoresDeConjuntos", "CollectionsCSharpOperadoresDeConjuntos\CollectionsCSharpOperadoresDeConjuntos.csproj", "{EB17C241-55DC-4EC1-BB68-CF66E0244DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpConvertendoEnumerando", "CollectionsCSharpConvertendoEnumerando\CollectionsCSharpConvertendoEnumerando.csproj", "{C18630EC-2B64-4070-A547-EED0CFE5CA26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{19BECD24-2AFB-49C7-ADDB-02C6E707514B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19BECD24-2AFB-49C7-ADDB-02C6E707514B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19BECD24-2AFB-49C7-ADDB-02C6E707514B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38C4CFA-49A1-4597-AA80-128EF7801720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38C4CFA-49A1-4597-AA80-128EF7801720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38C4CFA-49A1-4597-AA80-128EF7801720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38C4CFA-49A1-4597-AA80-128EF7801720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB17C241-55DC-4EC1-BB68-CF66E0244DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB17C241-55DC-4EC1-BB68-CF66E0244DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB17C241-55DC-4EC1-BB68-CF66E0244DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB17C241-55DC-4EC1-BB68-CF66E0244DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
