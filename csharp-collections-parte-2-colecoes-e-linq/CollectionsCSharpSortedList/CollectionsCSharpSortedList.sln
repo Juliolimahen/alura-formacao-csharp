@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpOperadores
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpConvertendoEnumerando", "CollectionsCSharpConvertendoEnumerando\CollectionsCSharpConvertendoEnumerando.csproj", "{C18630EC-2B64-4070-A547-EED0CFE5CA26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsCSharpLacoForeach", "CollectionsCSharpLacoForeach\CollectionsCSharpLacoForeach.csproj", "{0A4EC450-CE18-4C3C-B67B-90D8E1A24646}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C18630EC-2B64-4070-A547-EED0CFE5CA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A4EC450-CE18-4C3C-B67B-90D8E1A24646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A4EC450-CE18-4C3C-B67B-90D8E1A24646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A4EC450-CE18-4C3C-B67B-90D8E1A24646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A4EC450-CE18-4C3C-B67B-90D8E1A24646}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
