@@ -1,4 +1,15 @@
-public class LoginService
+using FluentResults;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UsuariosApi.Data.Requests;
+using UsuariosApi.Models;
+
+namespace UsuariosApi.Services
+{
+    public class LoginService
     {
         private SignInManager<IdentityUser<int>> _signInManager;
         private TokenService _tokenService;
@@ -27,3 +38,4 @@ public class LoginService
             return Result.Fail("Login falhou");
         }
     }
+}
